@@ -1,0 +1,27 @@
+# NiNote product site
+
+NiNote 的公開產品介紹網站。這個 repository 只保存對外網站內容，不包含 NiNote 私有產品原始碼或內部文件。
+
+## Local development
+
+```bash
+pnpm install
+pnpm dev
+```
+
+## Production build
+
+```bash
+pnpm build
+```
+
+靜態網站輸出位於 `dist`，可由 GitHub Pages workflow 發布。
+
+## Publishing
+
+1. 在 GitHub 建立公開的 `ninote-site` repository。
+2. 將此目錄推送至 repository 的 `main` branch。
+3. 在 repository 的 **Settings → Pages → Build and deployment** 選擇 **GitHub Actions**。
+4. `main` 更新後，`.github/workflows/deploy-pages.yml` 會自動建置並發布網站。
+
+正式產品能力與限制仍以 NiNote 私有 repository 的 canonical 產品介紹文件為準；公開網站應在重要產品變更時同步審查。

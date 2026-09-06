@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#080b10" />
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="description"
+      content="NiNote 是一套以本機 Markdown 為主資料的 Windows 知識工作工具，透過 Block、Page Links、MarkMap、Matrix 與 Graph 重新組織資訊。"
+    />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <title>NiNote｜從 Markdown 看見知識結構</title>
+    <script>
+      (() => {
+        const saved = localStorage.getItem('ninote-theme');
+        const theme = saved === 'light' || saved === 'dark'
+          ? saved
+          : matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        document.documentElement.dataset.theme = theme;
+        document.querySelector('meta[name="theme-color"]')
+          ?.setAttribute('content', theme === 'dark' ? '#080b10' : '#f5f7f8');
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/main.tsx"></script>
+  </body>
+</html>
