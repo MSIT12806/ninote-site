@@ -114,7 +114,7 @@ export default function Home() {
       <a className="skip-link" href="#content">跳至主要內容</a>
       <header className="site-header">
         <a className="brand" href="#top" aria-label="NiNote 首頁"><BrandMark /><span className="brand-name">NiNote</span><span className="brand-caption">字字珠璣</span></a>
-        <nav aria-label="主要導覽"><a href="#why">理念</a><a href="#editor">編輯</a><a href="#capabilities">功能</a><a href="#views">Views</a><a href="#scope">目前範圍</a></nav>
+        <nav aria-label="主要導覽"><a href="#why">理念</a><a href="#capabilities">功能</a><a href="#views">Views</a><a href="./guide/">使用說明</a><a href="./demo/">互動展示</a></nav>
         <ThemeSwitch theme={theme} setTheme={setTheme} />
       </header>
 
@@ -124,7 +124,7 @@ export default function Home() {
           <div className="status-chip"><span /> Windows Desktop-first · Early access</div>
           <h1>讓 Markdown 不只被保存，<span>還能看見結構。</span></h1>
           <p className="hero-lead">NiNote 是一套以本機 Markdown 為主資料、能與外部程式協作的知識工作工具。從大綱、連結、模板到多種視覺 View，重新組織資訊，也看見尚未被說清楚的地方。</p>
-          <div className="hero-actions"><a className="primary-action" href="#why">認識 NiNote <ArrowDown size={17} /></a><a className="text-action" href="#scope">查看目前產品範圍 <ArrowRight size={16} /></a></div>
+          <div className="hero-actions"><a className="primary-action" href="#why">認識 NiNote <ArrowDown size={17} /></a><a className="text-action" href="./guide/">閱讀使用說明 <ArrowRight size={16} /></a><a className="text-action" href="./demo/">開啟互動展示 <ArrowRight size={16} /></a></div>
           <dl className="hero-facts"><div><dt>主資料</dt><dd>本機 Markdown</dd></div><div><dt>平台</dt><dd>Windows Desktop</dd></div><div><dt>設計原則</dt><dd>View 可重建</dd></div></dl>
         </div>
         <div className="hero-visual"><div className="preview-orbit orbit-one" /><div className="preview-orbit orbit-two" /><ProductPreview /><div className="preview-note"><Sparkles size={15} /><span>同一份內容，不同理解角度</span></div></div>
@@ -167,7 +167,7 @@ export default function Home() {
         <div className="scope-card"><div className="scope-status"><span /> 目前產品範圍</div><h2>先為個人的 Windows 知識工作，把核心做好。</h2><p>NiNote 目前是 Windows Desktop-first、以個人本機 Workspace 為主的早期產品。它已具備 Markdown 編輯、連結、搜尋、Template、Task 與多種 View 基礎，但仍在外部使用者驗證階段。</p><div className="scope-details"><div><strong>現在聚焦</strong><span>個人知識工作、本機檔案自主、結構化理解</span></div><div><strong>尚未承諾</strong><span>完整跨平台、多人協作、雲端同步或 AI 自動推理</span></div><div><strong>行動裝置</strong><span>目前只有有限的 Android companion prototype，不是完整行動版</span></div><div><strong>Calendar</strong><span>目前是 Workspace 的本機唯讀投影，不與外部行事曆同步</span></div></div><div className="scope-footer"><p>NiNote 正在尋找真實工作情境，持續驗證產品方向。</p><span className="coming-soon">Early access details coming soon</span></div></div>
       </section>
 
-      <footer className="site-footer"><div className="footer-brand"><BrandMark /><div><strong>NiNote</strong><span>不只保存知識，而是看見知識中尚未被說清楚的結構。</span></div></div><p>Windows Desktop-first · Product preview</p></footer>
+      <footer className="site-footer"><div className="footer-brand"><BrandMark /><div><strong>NiNote</strong><span>不只保存知識，而是看見知識中尚未被說清楚的結構。</span></div></div><div className="footer-links"><a href="./guide/">使用說明</a><a href="./demo/">互動展示</a><p>Windows Desktop-first · Product preview</p></div></footer>
     </main>
   );
 }
