@@ -1,24 +1,35 @@
-import { useEffect, useMemo, useState } from 'react';
-import type * as React from 'react';
-import {
-  ArrowLeft, ArrowRight, ChevronDown, ChevronRight, Circle, FileCode2,
-  GitBranch, ListTree, Moon, Network, Plus, RotateCcw, Sun,
-} from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { ArrowRight, Check, Film, Moon, Sun } from 'lucide-react';
 
 type Theme = 'light' | 'dark';
-type Mode = 'nimode' | 'rendered' | 'source';
-type Projection = 'outline' | 'graph' | 'matrix';
-type TaskStatus = 'todo' | 'doing' | 'done' | null;
-type DemoBlock = { id: number; depth: number; text: string; status: TaskStatus };
 
-const initialBlocks: DemoBlock[] = [
-  { id: 1, depth: 0, text: '知識工作', status: null },
-  { id: 2, depth: 1, text: '研究', status: null },
-  { id: 3, depth: 2, text: '整理來源與證據', status: null },
-  { id: 4, depth: 2, text: '連結到 [[研究方法]]', status: null },
-  { id: 5, depth: 1, text: '寫作', status: null },
-  { id: 6, depth: 2, text: '比較共同點與差異', status: null },
-  { id: 7, depth: 2, text: '補上尚未說清楚的缺口', status: 'todo' },
+const productMediaBase = `${import.meta.env.BASE_URL}product-media`;
+
+const modes = [
+  {
+    id: 'nimode',
+    title: 'NiMode',
+    label: 'Structure',
+    description: '以 Block 階層直接整理研究脈絡、Page Links 與 Task。畫面同時保留 Folder Tree 與 Linked references。',
+    image: 'workspace-nimode.png',
+    alt: 'NiNote NiMode 真實畫面，顯示階層 Block、Page Links、Folder Tree 與 Linked references。',
+  },
+  {
+    id: 'rendered',
+    title: 'Rendered Mode',
+    label: 'Flow',
+    description: '同一份 Markdown 以較接近閱讀結果的方式呈現；資料沒有搬到另一個網站模型。',
+    image: 'workspace-rendered.png',
+    alt: 'NiNote Rendered Mode 真實畫面，以渲染後的 Markdown 顯示相同知識工作內容。',
+  },
+  {
+    id: 'source',
+    title: 'Source Mode',
+    label: 'Control',
+    description: '直接檢查原始 Markdown、縮排、Task 與 Page Link 語法，保留精確的文字控制。',
+    image: 'workspace-source.png',
+    alt: 'NiNote Source Mode 真實畫面，直接顯示相同內容的 Markdown 原始碼。',
+  },
 ];
 
 function BrandMark() {
@@ -30,19 +41,28 @@ function getInitialTheme(): Theme {
   return document.documentElement.dataset.theme === 'light' ? 'light' : 'dark';
 }
 
-function toMarkdown(blocks: DemoBlock[]) {
-  return blocks.map((block) => `${'  '.repeat(block.depth)}- ${block.status ? `[${block.status}] ` : ''}${block.text}`).join('\n');
+function ProductAnimation() {
+  return (
+    <picture className="demo-product-media">
+      <source
+        media="(prefers-reduced-motion: no-preference)"
+        srcSet={`${productMediaBase}/workspace-modes.gif`}
+        type="image/gif"
+      />
+      <img
+        src={`${productMediaBase}/workspace-nimode.png`}
+        width="1280"
+        height="800"
+        alt="真實 NiNote Windows Desktop 畫面，呈現同一份 Markdown 的正式編輯介面；下方另有三種模式的靜態對照。"
+        loading="eager"
+        fetchPriority="high"
+      />
+    </picture>
+  );
 }
-
-const statusLabel: Record<Exclude<TaskStatus, null>, string> = { todo: 'Todo', doing: 'Doing', done: 'Done' };
 
 export default function DemoPage() {
   const [theme, setTheme] = useState<Theme>(getInitialTheme);
-  const [mode, setMode] = useState<Mode>('nimode');
-  const [projection, setProjection] = useState<Projection>('outline');
-  const [blocks, setBlocks] = useState<DemoBlock[]>(initialBlocks);
-  const [activeId, setActiveId] = useState(4);
-  const [revision, setRevision] = useState(0);
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
@@ -50,36 +70,10 @@ export default function DemoPage() {
     document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#080b10' : '#f5f7f8');
   }, [theme]);
 
-  const updateBlocks = (next: DemoBlock[]) => { setBlocks(next); setRevision((value) => value + 1); };
-  const activeIndex = blocks.findIndex((block) => block.id === activeId);
-  const active = blocks[activeIndex] ?? blocks[0];
-
-  const changeText = (id: number, text: string) => updateBlocks(blocks.map((block) => block.id === id ? { ...block, text } : block));
-  const addBlock = (asChild: boolean) => {
-    const nextId = Math.max(...blocks.map((block) => block.id)) + 1;
-    const newBlock = { id: nextId, depth: asChild ? Math.min(active.depth + 1, 3) : active.depth, text: asChild ? '新的子 Block' : '新的 Block', status: null } satisfies DemoBlock;
-    const next = [...blocks]; next.splice(activeIndex + 1, 0, newBlock); updateBlocks(next); setActiveId(nextId);
-  };
-  const changeDepth = (delta: number) => {
-    if (activeIndex < 0) return;
-    const previousDepth = activeIndex > 0 ? blocks[activeIndex - 1].depth : 0;
-    const maxDepth = delta > 0 ? Math.min(previousDepth + 1, 3) : 3;
-    const depth = Math.max(0, Math.min(active.depth + delta, maxDepth));
-    updateBlocks(blocks.map((block) => block.id === activeId ? { ...block, depth } : block));
-  };
-  const cycleTask = () => {
-    const nextStatus: Record<string, TaskStatus> = { none: 'todo', todo: 'doing', doing: 'done', done: null };
-    updateBlocks(blocks.map((block) => block.id === activeId ? { ...block, status: nextStatus[block.status ?? 'none'] } : block));
-  };
-  const reset = () => { setBlocks(initialBlocks); setActiveId(4); setRevision((value) => value + 1); };
-
-  const links = useMemo(() => [...new Set(blocks.flatMap((block) => [...block.text.matchAll(/\[\[([^\]]+)\]\]/g)].map((match) => match[1])))], [blocks]);
-  const branches = useMemo(() => blocks.filter((block) => block.depth === 1), [blocks]);
-
   return (
     <div className="demo-page">
       <header className="demo-header">
-        <a className="demo-brand" href="../"><BrandMark /><span>NiNote</span><i>Interactive demo</i></a>
+        <a className="demo-brand" href="../"><BrandMark /><span>NiNote</span><i>Product capture</i></a>
         <nav><a href="../">產品介紹</a><a href="../guide/">使用說明</a></nav>
         <div className="theme-switch demo-theme" role="group" aria-label="網站色彩主題">
           <button type="button" className={theme === 'light' ? 'active' : ''} onClick={() => setTheme('light')} aria-pressed={theme === 'light'} aria-label="切換為淺色主題"><Sun size={15} /><span>淺色</span></button>
@@ -89,56 +83,67 @@ export default function DemoPage() {
 
       <main className="demo-main">
         <section className="demo-intro">
-          <div><span className="demo-kicker">Browser-only concept demo</span><h1>動手整理一小段知識。</h1><p>編輯 Block、改變層級、加入 Task，再觀察同一份內容如何投影成不同 View。</p></div>
-          <aside><strong>這是互動概念展示</strong><span>內容只存在目前瀏覽器記憶體，不會儲存或上傳，也不是完整 NiNote 網頁版。</span></aside>
+          <div>
+            <span className="demo-kicker">Real NiNote Desktop</span>
+            <h1>這就是現在的 NiNote。</h1>
+            <p>以下畫面由整合測試啟動真正的 Windows Desktop、載入固定 Workspace，再從正式 WebView2 自動錄製。</p>
+          </div>
+          <aside>
+            <strong>不是瀏覽器版，也不是概念稿</strong>
+            <span>網站沒有重做另一套編輯器。你看到的是實際產品元件、樣式與操作結果。</span>
+          </aside>
         </section>
 
-        <ol className="demo-tour" aria-label="建議體驗步驟">
-          <li><span>1</span><p><strong>選一個 Block</strong>直接修改文字</p></li>
-          <li><span>2</span><p><strong>調整結構</strong>加入子 Block 或切換 Task</p></li>
-          <li><span>3</span><p><strong>切換 View</strong>觀察右側投影</p></li>
-        </ol>
-
-        <section className="demo-workbench">
-          <div className="demo-window-bar">
-            <div className="demo-window-title"><BrandMark /><span>NiNote · 知識工作.md</span></div>
-            <div className="demo-modes" role="tablist" aria-label="編輯模式">
-              <button className={mode === 'nimode' ? 'active' : ''} onClick={() => setMode('nimode')} role="tab" aria-selected={mode === 'nimode'}>NiMode</button>
-              <button className={mode === 'rendered' ? 'active' : ''} onClick={() => setMode('rendered')} role="tab" aria-selected={mode === 'rendered'}>Rendered</button>
-              <button className={mode === 'source' ? 'active' : ''} onClick={() => setMode('source')} role="tab" aria-selected={mode === 'source'}>Source</button>
+        <section className="demo-stage" aria-labelledby="capture-heading">
+          <div className="demo-stage-heading">
+            <div>
+              <span className="demo-stage-label"><Film size={15} /> Desktop capture</span>
+              <h2 id="capture-heading">同一份 Markdown，三種正式編輯模式。</h2>
             </div>
-            <button className="demo-reset" type="button" onClick={reset}><RotateCcw size={14} />重設</button>
+            <ul aria-label="錄製資訊">
+              <li><Check size={14} /> 真實產品路徑</li>
+              <li><Check size={14} /> 原始畫面 1280 × 800</li>
+              <li><Check size={14} /> 自動循環</li>
+            </ul>
           </div>
+          <ProductAnimation />
+          <p className="demo-motion-note">若系統設定為減少動態，這裡會改用同一次錄製的 NiMode 靜態畫面。</p>
+        </section>
 
-          <div className="demo-toolbar">
-            <button type="button" onClick={() => addBlock(false)}><Plus size={15} />同層 Block</button>
-            <button type="button" onClick={() => addBlock(true)}><GitBranch size={15} />子 Block</button>
-            <button type="button" onClick={() => changeDepth(-1)} disabled={active.depth === 0}><ArrowLeft size={15} />升級</button>
-            <button type="button" onClick={() => changeDepth(1)} disabled={activeIndex === 0 || active.depth >= blocks[activeIndex - 1].depth + 1}><ArrowRight size={15} />降級</button>
-            <button type="button" onClick={cycleTask}><Circle size={15} />切換 Task</button>
+        <section className="demo-details" aria-labelledby="mode-details-heading">
+          <div className="demo-details-heading">
+            <span className="demo-kicker">Captured states</span>
+            <h2 id="mode-details-heading">不是三個 demo，是同一個 Page 的三種觀看方式。</h2>
           </div>
-
-          <div className="demo-grid">
-            <section className="demo-editor" aria-label="互動編輯器">
-              <div className="demo-editor-heading"><span>pages / 知識工作.md</span><i>{mode === 'nimode' ? '可編輯' : '投影預覽'}</i></div>
-              {mode === 'nimode' && <div className="demo-block-list">{blocks.map((block) => <div className={`demo-block ${block.id === activeId ? 'active' : ''}`} style={{ '--depth': block.depth } as React.CSSProperties} key={block.id} onClick={() => setActiveId(block.id)}><button type="button" className={`task-dot ${block.status ?? ''}`} aria-label={block.status ? `目前狀態 ${statusLabel[block.status]}` : '一般 Block'} onClick={(event) => { event.stopPropagation(); setActiveId(block.id); const map: Record<string, TaskStatus> = { none: 'todo', todo: 'doing', doing: 'done', done: null }; updateBlocks(blocks.map((item) => item.id === block.id ? { ...item, status: map[item.status ?? 'none'] } : item)); }}>{block.status === 'done' ? '✓' : block.status === 'doing' ? '◐' : ''}</button><input value={block.text} onFocus={() => setActiveId(block.id)} onChange={(event) => changeText(block.id, event.target.value)} aria-label={`Block ${block.id} 內容`} /></div>)}</div>}
-              {mode === 'rendered' && <div className="rendered-preview">{blocks.map((block) => <div className={`rendered-row depth-${block.depth}`} key={block.id}>{block.depth === 0 ? <h2>{block.text}</h2> : <p>{block.status && <span className={`rendered-task ${block.status}`}>{block.status === 'done' ? '✓' : block.status === 'doing' ? '◐' : '○'}</span>}{block.text.replace(/\[\[|\]\]/g, '')}</p>}</div>)}</div>}
-              {mode === 'source' && <pre className="source-preview"><code>{toMarkdown(blocks)}</code></pre>}
-              <div className="demo-status"><span className="saved-indicator" />展示內容未儲存 · revision {revision + 1}</div>
-            </section>
-
-            <section className="demo-projection" aria-label="即時投影">
-              <div className="projection-tabs" role="tablist"><button className={projection === 'outline' ? 'active' : ''} onClick={() => setProjection('outline')} role="tab"><ListTree size={15} />Outline</button><button className={projection === 'graph' ? 'active' : ''} onClick={() => setProjection('graph')} role="tab"><Network size={15} />Graph</button><button className={projection === 'matrix' ? 'active' : ''} onClick={() => setProjection('matrix')} role="tab"><FileCode2 size={15} />Matrix</button></div>
-              <div className="projection-body" key={`${projection}-${revision}`}>
-                {projection === 'outline' && <div className="outline-demo">{blocks.map((block) => <button type="button" className={block.id === activeId ? 'active' : ''} style={{ '--depth': block.depth } as React.CSSProperties} key={block.id} onClick={() => setActiveId(block.id)}>{block.depth < 2 ? <ChevronDown size={13} /> : <ChevronRight size={13} />}<span>{block.text.replace(/\[\[|\]\]/g, '')}</span></button>)}</div>}
-                {projection === 'graph' && <div className="graph-demo"><span className="graph-edge edge-main" /><span className="graph-edge edge-link" /><button className="demo-node center" type="button">知識工作</button>{branches.slice(0, 2).map((block, index) => <button className={`demo-node branch branch-${index + 1}`} type="button" key={block.id} onClick={() => setActiveId(block.id)}>{block.text}</button>)}{links.slice(0, 1).map((link) => <button className="demo-node linked" type="button" key={link}>{link}</button>)}</div>}
-                {projection === 'matrix' && <div className="matrix-demo"><table><thead><tr><th>面向</th>{branches.slice(0, 2).map((branch) => <th key={branch.id}>{branch.text}</th>)}</tr></thead><tbody><tr><th>來源</th><td className="present">有</td><td>—</td></tr><tr><th>比較</th><td>—</td><td className="present">有</td></tr><tr><th>缺口</th><td>—</td><td className="present">有</td></tr></tbody></table><p>示意：Matrix 對齊同層分支，缺少的面向不會被自動補寫。</p></div>}
-              </div>
-            </section>
+          <div className="demo-mode-grid">
+            {modes.map((mode, index) => (
+              <article className="demo-mode-card" key={mode.id}>
+                <div className="demo-mode-copy">
+                  <span>{String(index + 1).padStart(2, '0')} · {mode.label}</span>
+                  <h3>{mode.title}</h3>
+                  <p>{mode.description}</p>
+                </div>
+                <img
+                  src={`${productMediaBase}/${mode.image}`}
+                  width="1280"
+                  height="800"
+                  alt={mode.alt}
+                  loading="lazy"
+                />
+              </article>
+            ))}
           </div>
         </section>
 
-        <section className="demo-next"><span>想了解每項操作的完整範圍？</span><a href="../guide/">前往使用說明 <ArrowRight size={16} /></a></section>
+        <section className="demo-source-note">
+          <div>
+            <strong>畫面可以隨產品重錄</strong>
+            <span>固定測試資料、尺寸與模式切換讓網站素材能追溯到 NiNote 版本，不必再靠手工仿製追趕產品。</span>
+          </div>
+          <a href={`${productMediaBase}/product-media-manifest.json`}>查看錄製資訊</a>
+        </section>
+
+        <section className="demo-next"><span>想了解各項功能的完整範圍？</span><a href="../guide/">前往使用說明 <ArrowRight size={16} /></a></section>
       </main>
     </div>
   );

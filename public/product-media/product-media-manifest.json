@@ -1,0 +1,30 @@
+{
+  "scenarioId": "SITE-01.1-workspace-modes",
+  "ninoteCommit": "c71bd9f05084d2693fac42b0ec52b3ac98b3b7c8",
+  "capturedAtUtc": "2026-09-07T16:25:15.9135278+08:00",
+  "width": 1280,
+  "height": 800,
+  "stills": [
+    {
+      "fileName": "workspace-nimode.png",
+      "sha256": "3192ec3d9caf2a19ccbd07371ec6aecec094235a31b57bff44404fc27205c43d"
+    },
+    {
+      "fileName": "workspace-rendered.png",
+      "sha256": "51da93833364873f9eca9e6afa41ff294d3203335b67a1f4c591733c735f43ae"
+    },
+    {
+      "fileName": "workspace-source.png",
+      "sha256": "df4d2dac4a9cb173802d51f6156617e899abe8b7e044bf3795ce522e94bef88c"
+    }
+  ],
+  "gif": {
+    "fileName": "workspace-modes.gif",
+    "width": 1200,
+    "height": 750,
+    "frameCount": 72,
+    "frameRate": "8/1",
+    "bytes": 128314,
+    "sha256": "3e512955c06b52e248e29ff50549c76a2a863ab02b4feb075c6185559dc956ea"
+  }
+}

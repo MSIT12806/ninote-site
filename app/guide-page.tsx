@@ -138,7 +138,7 @@ export default function GuidePage() {
           <button className="docs-menu-button" type="button" aria-label={menuOpen ? '關閉文件導覽' : '開啟文件導覽'} onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X size={19} /> : <Menu size={19} />}</button>
           <a className="docs-brand" href="../"><BrandMark /><span>NiNote</span><i>Docs</i></a>
         </div>
-        <nav className="docs-top-nav"><a href="../">產品介紹</a><a className="active" href="#overview">使用說明</a><a href="../demo/">互動展示</a></nav>
+        <nav className="docs-top-nav"><a href="../">產品介紹</a><a className="active" href="#overview">使用說明</a><a href="../demo/">產品畫面</a></nav>
         <ThemeSwitch theme={theme} setTheme={setTheme} />
       </header>
 
@@ -153,7 +153,7 @@ export default function GuidePage() {
             })}
             {matchingIds.size === 0 && <p className="docs-no-result">找不到相符文件。</p>}
           </nav>
-          <a className="demo-sidebar-link" href="../demo/"><BookOpen size={16} /><span><strong>想先動手試試？</strong>開啟互動展示</span><ArrowRight size={15} /></a>
+          <a className="demo-sidebar-link" href="../demo/"><BookOpen size={16} /><span><strong>先看看真實介面</strong>開啟 Desktop 操作畫面</span><ArrowRight size={15} /></a>
         </aside>
 
         <main className="docs-main"><Article page={activePage} /></main>
