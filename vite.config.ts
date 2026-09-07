@@ -9,5 +9,14 @@ export default defineConfig(({ mode }) => {
   return {
     base,
     plugins: [react()],
+    build: {
+      rollupOptions: {
+        input: {
+          main: 'index.html',
+          guide: 'guide/index.html',
+          demo: 'demo/index.html',
+        },
+      },
+    },
   };
 });
