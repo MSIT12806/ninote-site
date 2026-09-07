@@ -257,6 +257,18 @@ button { font: inherit; }
 .principle-list > div:first-child { padding-top: 0; }.principle-list > div:last-child { padding-bottom: 0; border: 0; }
 .principle-list svg { margin-top: .2rem; color: var(--cyan); }.principle-list strong { display: block; color: var(--text-soft); font-size: .92rem; }
 
+.download-section { padding-block: 5rem; }
+.download-panel { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(2.5rem, 7vw, 7rem); padding: clamp(2rem, 6vw, 5.5rem); border: 1px solid color-mix(in srgb, var(--cyan) 28%, transparent); border-radius: 1rem; background: radial-gradient(circle at 12% 15%, color-mix(in srgb, var(--cyan) 13%, transparent), transparent 25rem), var(--surface); box-shadow: 0 1.5rem 5rem color-mix(in srgb, var(--shadow) 35%, transparent); }
+.download-copy h2 { max-width: 15ch; margin: 0; color: var(--text); font-size: clamp(2.3rem, 4.2vw, 4.15rem); font-weight: 670; line-height: 1.12; letter-spacing: -.055em; }
+.download-copy > p { max-width: 42rem; margin: 1.7rem 0 0; color: var(--muted); font-size: 1rem; line-height: 1.9; }
+.download-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.35rem; margin-top: 2rem; }
+.download-notes { display: grid; align-content: start; gap: 1px; overflow: hidden; border: 1px solid var(--line); border-radius: .7rem; background: var(--line); }
+.download-notes > div { display: grid; gap: .55rem; padding: 1.35rem; background: var(--scope-cell); }
+.download-notes strong { color: var(--text-soft); font-size: .84rem; }
+.download-notes span { color: var(--muted); font-size: .82rem; line-height: 1.75; }
+.download-notes .download-warning { background: color-mix(in srgb, var(--amber) 7%, var(--scope-cell)); }
+.download-warning strong { color: var(--amber); }
+
 .scope-section { padding-top: 5rem; }
 .scope-card { position: relative; overflow: hidden; padding: clamp(2rem, 6vw, 5.5rem); border: 1px solid color-mix(in srgb, var(--cyan) 20%, transparent); border-radius: 1rem; background: radial-gradient(circle at 90% 10%, color-mix(in srgb, var(--cyan) 11%, transparent), transparent 24rem), var(--panel-gradient); }
 .scope-card::before { content: ''; position: absolute; top: -6rem; right: -6rem; width: 18rem; height: 18rem; border: 1px solid color-mix(in srgb, var(--cyan) 16%, transparent); border-radius: 50%; }
@@ -287,7 +299,7 @@ button { font: inherit; }
   .hero, .section-shell, .site-header, .site-footer { width: min(calc(100% - 2rem), var(--max-width)); }
   .hero { min-height: auto; padding: 4rem 0 5rem; }.hero h1 { font-size: clamp(2.65rem, 12vw, 4rem); }.hero-facts { grid-template-columns: 1fr; }
   .hero-facts div { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; padding: .2rem 0; }
-  .section-shell { padding: 6rem 0; }.split-heading, .principles-panel { grid-template-columns: 1fr; gap: 1.5rem; }
+  .section-shell { padding: 6rem 0; }.split-heading, .principles-panel, .download-panel { grid-template-columns: 1fr; gap: 1.5rem; }
   .pillar-grid, .mode-grid, .capability-grid { grid-template-columns: 1fr; }.pillar-card { min-height: 15rem; }.mode-card { min-height: 19rem; }
   .workflow-track { grid-template-columns: 1fr 1fr; gap: 2rem 1rem; }.workflow-track::before { display: none; }
   .views-grid { grid-template-columns: 1fr; grid-template-rows: auto; }.view-featured { grid-row: auto; min-height: 30rem; }
@@ -297,7 +309,7 @@ button { font: inherit; }
 
 @media (max-width: 620px) {
   .theme-switch span { display: none; }.theme-switch button { width: 2rem; justify-content: center; padding: 0; }
-  .hero-actions { align-items: flex-start; flex-direction: column; }
+  .hero-actions, .download-actions { align-items: flex-start; flex-direction: column; }
   .workspace-shell { grid-template-columns: 6.5rem minmax(15rem, 1fr); min-width: 31rem; }.product-preview { overflow-x: auto; }.insight-pane { display: none; }.editor-pane { padding-inline: 1.2rem; }.preview-note { right: .7rem; }
   .editor-support, .workflow-track { grid-template-columns: 1fr; }.view-featured { min-height: 32rem; }.outline-visual { right: 1.2rem; left: 1.2rem; }
   .principles-panel { padding: 1.5rem; }

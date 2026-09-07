@@ -8,6 +8,10 @@ import {
 
 type Theme = 'light' | 'dark';
 
+const downloadUrl = 'https://github.com/MSIT12806/ninote-site/releases/latest/download/NiNote-win-x64-Setup.exe';
+const releasesUrl = 'https://github.com/MSIT12806/ninote-site/releases/latest';
+const feedbackUrl = 'https://github.com/MSIT12806/ninote-site/issues/new';
+
 const pillars = [
   { icon: FileText, eyebrow: 'Keep', title: 'Markdown 就是主資料', description: '每一頁都是你能直接管理的 Markdown 檔案。檔案總管、Git、備份工具與其他編輯器，仍然可以一起工作。' },
   { icon: Link2, eyebrow: 'Connect', title: '把內容連成脈絡', description: '用 Page Links、Alias 與 Linked References 找回來源與關係，讓零散材料逐漸形成可追蹤的知識網路。' },
@@ -114,7 +118,7 @@ export default function Home() {
       <a className="skip-link" href="#content">跳至主要內容</a>
       <header className="site-header">
         <a className="brand" href="#top" aria-label="NiNote 首頁"><BrandMark /><span className="brand-name">NiNote</span><span className="brand-caption">字字珠璣</span></a>
-        <nav aria-label="主要導覽"><a href="#why">理念</a><a href="#capabilities">功能</a><a href="#views">Views</a><a href="./guide/">使用說明</a><a href="./demo/">互動展示</a></nav>
+        <nav aria-label="主要導覽"><a href="#why">理念</a><a href="#capabilities">功能</a><a href="#views">Views</a><a href="#download">下載</a><a href="./guide/">使用說明</a><a href="./demo/">互動展示</a></nav>
         <ThemeSwitch theme={theme} setTheme={setTheme} />
       </header>
 
@@ -124,7 +128,7 @@ export default function Home() {
           <div className="status-chip"><span /> Windows Desktop-first · Early access</div>
           <h1>讓 Markdown 不只被保存，<span>還能看見結構。</span></h1>
           <p className="hero-lead">NiNote 是一套以本機 Markdown 為主資料、能與外部程式協作的知識工作工具。從大綱、連結、模板到多種視覺 View，重新組織資訊，也看見尚未被說清楚的地方。</p>
-          <div className="hero-actions"><a className="primary-action" href="#why">認識 NiNote <ArrowDown size={17} /></a><a className="text-action" href="./guide/">閱讀使用說明 <ArrowRight size={16} /></a><a className="text-action" href="./demo/">開啟互動展示 <ArrowRight size={16} /></a></div>
+          <div className="hero-actions"><a className="primary-action" href={downloadUrl}>下載 Windows 版 <ArrowDown size={17} /></a><a className="text-action" href="#why">認識 NiNote <ArrowRight size={16} /></a><a className="text-action" href="./guide/">閱讀使用說明 <ArrowRight size={16} /></a></div>
           <dl className="hero-facts"><div><dt>主資料</dt><dd>本機 Markdown</dd></div><div><dt>平台</dt><dd>Windows Desktop</dd></div><div><dt>設計原則</dt><dd>View 可重建</dd></div></dl>
         </div>
         <div className="hero-visual"><div className="preview-orbit orbit-one" /><div className="preview-orbit orbit-two" /><ProductPreview /><div className="preview-note"><Sparkles size={15} /><span>同一份內容，不同理解角度</span></div></div>
@@ -163,8 +167,24 @@ export default function Home() {
         <div className="principles-panel"><div><div className="section-kicker">Local by design</div><h2 id="principles-title">你的檔案，仍然是你的檔案。</h2><p>一個 Page 對應一個 Markdown 檔案。必要角色保留在文字中，Workspace 索引、搜尋結果、Graph 與 Task Center 則是可重新建立的投影。</p></div><div className="principle-list"><div><FolderTree size={19} /><span><strong>一般檔案結構</strong>可由檔案總管、Git、備份與其他 Markdown 工具管理。</span></div><div><PanelTopOpen size={19} /><span><strong>多 Editor Window</strong>共享文件 revision、Undo／Redo 與 autosave。</span></div><div><Languages size={19} /><span><strong>可讀的 metadata</strong>保留 Block、Template、Lens 與 Task 的必要語意。</span></div><div><Command size={19} /><span><strong>不靠專有匯出</strong>資料仍能在 NiNote 之外被閱讀、編輯與版本控制。</span></div></div></div>
       </section>
 
+      <section className="download-section section-shell" id="download" aria-labelledby="download-title">
+        <div className="download-panel">
+          <div className="download-copy">
+            <div className="section-kicker">Windows Early Access</div>
+            <h2 id="download-title">下載 NiNote，開始用自己的 Markdown 工作。</h2>
+            <p>目前提供 Windows x64 測試版，適用於 Windows 10 1809 以上。安裝於目前的 Windows 使用者，不需要系統管理員權限。</p>
+            <div className="download-actions"><a className="primary-action" href={downloadUrl}>下載安裝程式 <ArrowDown size={17} /></a><a className="text-action" href={releasesUrl}>版本說明與檔案校驗碼 <ArrowRight size={16} /></a><a className="text-action" href={feedbackUrl}>回報試用問題 <ArrowRight size={16} /></a></div>
+          </div>
+          <div className="download-notes">
+            <div><strong>更新方式</strong><span>NiNote 啟動後會安靜檢查新版本；有更新時先通知你，只有確認後才會下載、保存筆記並重新啟動。</span></div>
+            <div><strong>資料位置</strong><span>你的 Workspace 仍是一般 Markdown 檔案。更新安裝程式不會搬動或取代這些筆記。</span></div>
+            <div className="download-warning"><strong>測試版提醒</strong><span>目前安裝程式尚未加上數位簽章，Windows SmartScreen 可能顯示警告。請只從本頁或 GitHub Releases 下載，並可先核對 SHA-256；試用問題可登入 GitHub 回報。</span></div>
+          </div>
+        </div>
+      </section>
+
       <section className="scope-section section-shell" id="scope">
-        <div className="scope-card"><div className="scope-status"><span /> 目前產品範圍</div><h2>先為個人的 Windows 知識工作，把核心做好。</h2><p>NiNote 目前是 Windows Desktop-first、以個人本機 Workspace 為主的早期產品。它已具備 Markdown 編輯、連結、搜尋、Template、Task 與多種 View 基礎，但仍在外部使用者驗證階段。</p><div className="scope-details"><div><strong>現在聚焦</strong><span>個人知識工作、本機檔案自主、結構化理解</span></div><div><strong>尚未承諾</strong><span>完整跨平台、多人協作、雲端同步或 AI 自動推理</span></div><div><strong>行動裝置</strong><span>目前只有有限的 Android companion prototype，不是完整行動版</span></div><div><strong>Calendar</strong><span>目前是 Workspace 的本機唯讀投影，不與外部行事曆同步</span></div></div><div className="scope-footer"><p>NiNote 正在尋找真實工作情境，持續驗證產品方向。</p><span className="coming-soon">Early access details coming soon</span></div></div>
+        <div className="scope-card"><div className="scope-status"><span /> 目前產品範圍</div><h2>先為個人的 Windows 知識工作，把核心做好。</h2><p>NiNote 目前是 Windows Desktop-first、以個人本機 Workspace 為主的早期產品。它已具備 Markdown 編輯、連結、搜尋、Template、Task 與多種 View 基礎，但仍在外部使用者驗證階段。</p><div className="scope-details"><div><strong>現在聚焦</strong><span>個人知識工作、本機檔案自主、結構化理解</span></div><div><strong>尚未承諾</strong><span>完整跨平台、多人協作、雲端同步或 AI 自動推理</span></div><div><strong>行動裝置</strong><span>目前只有有限的 Android companion prototype，不是完整行動版</span></div><div><strong>Calendar</strong><span>目前是 Workspace 的本機唯讀投影，不與外部行事曆同步</span></div></div><div className="scope-footer"><p>NiNote 正在尋找真實工作情境，持續驗證產品方向。</p><a className="coming-soon" href="#download">Windows Early Access 可下載</a></div></div>
       </section>
 
       <footer className="site-footer"><div className="footer-brand"><BrandMark /><div><strong>NiNote</strong><span>不只保存知識，而是看見知識中尚未被說清楚的結構。</span></div></div><div className="footer-links"><a href="./guide/">使用說明</a><a href="./demo/">互動展示</a><p>Windows Desktop-first · Product preview</p></div></footer>
