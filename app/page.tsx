@@ -11,6 +11,7 @@ type Theme = 'light' | 'dark';
 const downloadUrl = 'https://github.com/MSIT12806/ninote-site/releases/latest/download/NiNote-win-x64-Setup.exe';
 const releasesUrl = 'https://github.com/MSIT12806/ninote-site/releases/latest';
 const feedbackUrl = 'https://github.com/MSIT12806/ninote-site/issues/new';
+const productMediaBase = `${import.meta.env.BASE_URL}product-media`;
 
 const pillars = [
   { icon: FileText, eyebrow: 'Keep', title: 'Markdown 就是主資料', description: '每一頁都是你能直接管理的 Markdown 檔案。檔案總管、Git、備份工具與其他編輯器，仍然可以一起工作。' },
@@ -53,49 +54,23 @@ function ThemeSwitch({ theme, setTheme }: { theme: Theme; setTheme: (theme: Them
   );
 }
 
-function ProductPreview() {
+function ProductMedia() {
   return (
-    <div className="product-preview" aria-label="NiNote 產品介面概念預覽">
-      <div className="window-bar">
-        <div className="window-brand"><BrandMark /><span>NiNote</span></div>
-        <div className="window-tabs" aria-hidden="true"><span>Editor</span><span>Links</span><span>View</span></div>
-        <div className="window-controls" aria-hidden="true"><i /><i /><i /></div>
-      </div>
-      <div className="workspace-shell">
-        <aside className="folder-pane" aria-label="工作目錄示意">
-          <div className="pane-label"><span>Workspace</span><Search size={13} /></div>
-          <div className="tree-item tree-folder"><FolderTree size={14} /><span>Knowledge Base</span></div>
-          <div className="tree-children">
-            <div className="tree-item"><FileText size={13} /><span>研究方法.md</span></div>
-            <div className="tree-item selected"><FileText size={13} /><span>知識如何形成.md</span></div>
-            <div className="tree-item"><FileText size={13} /><span>寫作系統.md</span></div>
-          </div>
-          <div className="pane-label secondary-label">Views</div>
-          <div className="tree-item muted"><Network size={13} /><span>Workspace Graph</span></div>
-          <div className="tree-item muted"><ListChecks size={13} /><span>Task Center</span></div>
-        </aside>
-        <article className="editor-pane">
-          <div className="editor-path">pages / 知識如何形成.md</div>
-          <div className="editor-title-row"><h2>知識如何形成</h2><span className="mode-pill">NiMode</span></div>
-          <div className="note-tree">
-            <div className="note-line"><span className="bullet" /><strong>理解不只是收藏更多資料</strong></div>
-            <div className="note-line level-1"><span className="branch" /><span className="bullet" /><span>重新找到 <mark>來源脈絡</mark></span></div>
-            <div className="note-line level-1"><span className="branch" /><span className="bullet" /><span>比較不同案例的結構</span></div>
-            <div className="note-line level-2"><span className="branch" /><span className="bullet" /><span>連結到 <a href="#views">[[研究方法]]</a></span></div>
-            <div className="note-line level-1"><span className="branch" /><span className="bullet" /><span>看見目前尚未說清楚的缺口</span></div>
-          </div>
-          <div className="editor-status"><span>5 blocks</span><span className="saved-dot" /><span>已儲存至本機 Markdown</span></div>
-        </article>
-        <aside className="insight-pane" aria-label="關聯檢視示意">
-          <div className="pane-label">Page Graph</div>
-          <div className="mini-graph" aria-hidden="true">
-            <span className="graph-line line-a" /><span className="graph-line line-b" /><span className="graph-line line-c" />
-            <span className="graph-node node-center">知識</span><span className="graph-node node-a">研究</span><span className="graph-node node-b">寫作</span><span className="graph-node node-c">問題</span>
-          </div>
-          <div className="reference-card"><span className="reference-label">Linked reference</span><strong>研究方法</strong><p>比較不是為了分類，而是暴露還沒被回答的問題。</p></div>
-        </aside>
-      </div>
-    </div>
+    <picture className="product-media-frame">
+      <source
+        media="(prefers-reduced-motion: no-preference)"
+        srcSet={`${productMediaBase}/workspace-modes.gif`}
+        type="image/gif"
+      />
+      <img
+        src={`${productMediaBase}/workspace-nimode.png`}
+        width="1280"
+        height="800"
+        alt="真實 NiNote Windows Desktop 畫面：左側是 Workspace Folder Tree，右側以 NiMode 編輯知識工作 Page，並在下方顯示 Linked references。"
+        loading="eager"
+        fetchPriority="high"
+      />
+    </picture>
   );
 }
 
@@ -118,7 +93,7 @@ export default function Home() {
       <a className="skip-link" href="#content">跳至主要內容</a>
       <header className="site-header">
         <a className="brand" href="#top" aria-label="NiNote 首頁"><BrandMark /><span className="brand-name">NiNote</span><span className="brand-caption">字字珠璣</span></a>
-        <nav aria-label="主要導覽"><a href="#why">理念</a><a href="#capabilities">功能</a><a href="#views">Views</a><a href="#download">下載</a><a href="./guide/">使用說明</a><a href="./demo/">互動展示</a></nav>
+        <nav aria-label="主要導覽"><a href="#why">理念</a><a href="#capabilities">功能</a><a href="#views">Views</a><a href="#download">下載</a><a href="./guide/">使用說明</a><a href="./demo/">產品畫面</a></nav>
         <ThemeSwitch theme={theme} setTheme={setTheme} />
       </header>
 
@@ -131,7 +106,7 @@ export default function Home() {
           <div className="hero-actions"><a className="primary-action" href={downloadUrl}>下載 Windows 版 <ArrowDown size={17} /></a><a className="text-action" href="#why">認識 NiNote <ArrowRight size={16} /></a><a className="text-action" href="./guide/">閱讀使用說明 <ArrowRight size={16} /></a></div>
           <dl className="hero-facts"><div><dt>主資料</dt><dd>本機 Markdown</dd></div><div><dt>平台</dt><dd>Windows Desktop</dd></div><div><dt>設計原則</dt><dd>View 可重建</dd></div></dl>
         </div>
-        <div className="hero-visual"><div className="preview-orbit orbit-one" /><div className="preview-orbit orbit-two" /><ProductPreview /><div className="preview-note"><Sparkles size={15} /><span>同一份內容，不同理解角度</span></div></div>
+        <div className="hero-visual"><div className="preview-orbit orbit-one" /><div className="preview-orbit orbit-two" /><ProductMedia /><div className="preview-note"><Sparkles size={15} /><span>真實 Desktop 錄製 · NiMode → Rendered → Source</span></div></div>
       </section>
 
       <section className="section-shell" id="why">
@@ -187,7 +162,7 @@ export default function Home() {
         <div className="scope-card"><div className="scope-status"><span /> 目前產品範圍</div><h2>先為個人的 Windows 知識工作，把核心做好。</h2><p>NiNote 目前是 Windows Desktop-first、以個人本機 Workspace 為主的早期產品。它已具備 Markdown 編輯、連結、搜尋、Template、Task 與多種 View 基礎，但仍在外部使用者驗證階段。</p><div className="scope-details"><div><strong>現在聚焦</strong><span>個人知識工作、本機檔案自主、結構化理解</span></div><div><strong>尚未承諾</strong><span>完整跨平台、多人協作、雲端同步或 AI 自動推理</span></div><div><strong>行動裝置</strong><span>目前只有有限的 Android companion prototype，不是完整行動版</span></div><div><strong>Calendar</strong><span>目前是 Workspace 的本機唯讀投影，不與外部行事曆同步</span></div></div><div className="scope-footer"><p>NiNote 正在尋找真實工作情境，持續驗證產品方向。</p><a className="coming-soon" href="#download">Windows Early Access 可下載</a></div></div>
       </section>
 
-      <footer className="site-footer"><div className="footer-brand"><BrandMark /><div><strong>NiNote</strong><span>不只保存知識，而是看見知識中尚未被說清楚的結構。</span></div></div><div className="footer-links"><a href="./guide/">使用說明</a><a href="./demo/">互動展示</a><p>Windows Desktop-first · Product preview</p></div></footer>
+      <footer className="site-footer"><div className="footer-brand"><BrandMark /><div><strong>NiNote</strong><span>不只保存知識，而是看見知識中尚未被說清楚的結構。</span></div></div><div className="footer-links"><a href="./guide/">使用說明</a><a href="./demo/">產品畫面</a><p>Windows Desktop-first · Real product capture</p></div></footer>
     </main>
   );
 }
