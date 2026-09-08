@@ -1,7 +1,7 @@
 {
   "scenarioId": "SITE-02.1-guide-surfaces",
-  "ninoteCommit": "411bf58ba5728b95062b8710a32a03a61e4aa394",
-  "capturedAtUtc": "2026-09-08T11:27:53.2848732+08:00",
+  "ninoteCommit": "ecaa44b37cb05c1813e81f3513bd5e71719c2790",
+  "capturedAtUtc": "2026-09-08T11:51:26.9897112+08:00",
   "width": 1280,
   "height": 800,
   "stills": [
@@ -23,7 +23,7 @@
     },
     {
       "fileName": "guide-appearance.png",
-      "sha256": "a43a3f7b0fefbb3d3398aff7e04fd13c5df665f1f7496ebf92af2ced59fcdfab"
+      "sha256": "3cd5870947705db86a4ea217b662099fdcdca460f52c99c3537777fc419542f6"
     },
     {
       "fileName": "guide-page-links.png",
@@ -39,7 +39,7 @@
     },
     {
       "fileName": "guide-markmap.png",
-      "sha256": "1fe42d8a0c341f1a6737a279885d8d28c950b3f67bad34ac23c8613384611fc6"
+      "sha256": "2b26d3edf9da47992267a38a1f6d0331c146bcbdf6ca1daa664bfd7aab29813f"
     },
     {
       "fileName": "guide-matrix.png",
@@ -51,7 +51,7 @@
     },
     {
       "fileName": "guide-workspace-graph.png",
-      "sha256": "b738569c5dc492c3bb160e1ab7ae4b9e8751a07d91cd2fbe175a2c5ea0ea78c3"
+      "sha256": "849bfef7ef6fb14895e13e63d3ba0aca6526d4105d5a8798dee4ca081e53ba7a"
     },
     {
       "fileName": "guide-search.png",
