@@ -7,8 +7,8 @@ import { categories, docs, docsById, type DocBlock, type DocPage } from './guide
 
 type Theme = 'light' | 'dark';
 
-function BrandMark() {
-  return <span className="brand-mark" aria-hidden="true"><span>N</span></span>;
+function BrandLogo() {
+  return <img className="brand-logo" src={`${import.meta.env.BASE_URL}intugrove-logo.png`} alt="" aria-hidden="true" />;
 }
 
 function ThemeSwitch({ theme, setTheme }: { theme: Theme; setTheme: (theme: Theme) => void }) {
@@ -78,8 +78,8 @@ function Article({ page }: { page: DocPage }) {
 }
 
 function getInitialTheme(): Theme {
-  if (typeof document === 'undefined') return 'dark';
-  return document.documentElement.dataset.theme === 'light' ? 'light' : 'dark';
+  if (typeof document === 'undefined') return 'light';
+  return document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
 }
 
 function getPageFromHash() {
@@ -103,7 +103,7 @@ export default function GuidePage() {
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
     localStorage.setItem('ninote-theme', theme);
-    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#080b10' : '#f5f7f8');
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#0e1713' : '#f7f3e9');
   }, [theme]);
 
   const matchingIds = useMemo(() => {
@@ -117,7 +117,7 @@ export default function GuidePage() {
       <header className="docs-header">
         <div className="docs-header-left">
           <button className="docs-menu-button" type="button" aria-label={menuOpen ? '關閉文件導覽' : '開啟文件導覽'} onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X size={19} /> : <Menu size={19} />}</button>
-          <a className="docs-brand" href="../"><BrandMark /><span>NiNote</span><i>Docs</i></a>
+          <a className="docs-brand" href="../"><BrandLogo /><span>Intugrove</span><i>Guide</i></a>
         </div>
         <nav className="docs-top-nav"><a href="../">產品介紹</a><a className="active" href="#overview">使用說明</a><a href="../demo/">產品畫面</a></nav>
         <ThemeSwitch theme={theme} setTheme={setTheme} />

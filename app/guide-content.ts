@@ -43,18 +43,18 @@ const media = (src: string, alt: string, caption: string): GuideMediaPlacement['
 export const guideMediaByPage: Record<string, GuideMediaPlacement[]> = {
   'overview': [{ sectionId: 'what-is-ninote', block: media(
     '../product-media/guide-workspace.png',
-    'NiNote Desktop 主工作區，左側是本機 Workspace 檔案，中間以 NiMode 編輯知識工作 Page，右下顯示反向連結。',
-    '實際 NiNote Desktop：一份本機 Markdown，同時提供檔案、Block 編輯、Lens、Task 與 References。',
+    'Intugrove Desktop 主工作區，左側是本機 Workspace 檔案，中間以 NiMode 編輯知識工作 Page，右下顯示反向連結。',
+    '實際 Intugrove Desktop：一份本機 Markdown，同時提供檔案、Block 編輯、Lens、Task 與 References。',
   ) }],
   'workspace': [{ sectionId: 'choose-folder', block: media(
     '../product-media/guide-files.png',
-    'NiNote Desktop 的檔案側欄展開 workspace、pages、templates 與 assets 資料夾。',
+    'Intugrove Desktop 的檔案側欄展開 workspace、pages、templates 與 assets 資料夾。',
     '從左側「檔案」管理 Working Folder；初始化後的 Workspace 仍是一般資料夾與 Markdown 檔案。',
   ) }],
   'editor-modes': [
-    { sectionId: 'mode-comparison', block: media('../product-media/workspace-nimode.png', 'NiNote 的 NiMode，以可摺疊 Block、Lens、Task 狀態與語意圖示呈現 Markdown。', 'NiMode：以 Block 階層與結構操作為中心。') },
-    { sectionId: 'mode-comparison', block: media('../product-media/workspace-rendered.png', 'NiNote 的 Rendered Mode，在同一工作區呈現接近閱讀結果的 Markdown。', 'Rendered Mode：保留 Markdown 語意的自然編輯畫面。') },
-    { sectionId: 'mode-comparison', block: media('../product-media/workspace-source.png', 'NiNote 的 Source Mode，直接顯示同一份 Markdown 原始文字。', 'Source Mode：檢查與精確編輯真正保存的 Markdown。') },
+    { sectionId: 'mode-comparison', block: media('../product-media/workspace-nimode.png', 'Intugrove 的 NiMode，以可摺疊 Block、Lens、Task 狀態與語意圖示呈現 Markdown。', 'NiMode：以 Block 階層與結構操作為中心。') },
+    { sectionId: 'mode-comparison', block: media('../product-media/workspace-rendered.png', 'Intugrove 的 Rendered Mode，在同一工作區呈現接近閱讀結果的 Markdown。', 'Rendered Mode：保留 Markdown 語意的自然編輯畫面。') },
+    { sectionId: 'mode-comparison', block: media('../product-media/workspace-source.png', 'Intugrove 的 Source Mode，直接顯示同一份 Markdown 原始文字。', 'Source Mode：檢查與精確編輯真正保存的 Markdown。') },
   ],
   'blocks': [{ sectionId: 'block-basics', block: media(
     '../product-media/workspace-nimode.png',
@@ -63,7 +63,7 @@ export const guideMediaByPage: Record<string, GuideMediaPlacement[]> = {
   ) }],
   'appearance': [{ sectionId: 'app-theme', block: media(
     '../product-media/guide-appearance.png',
-    'NiNote View 選單展開，顯示 NiMode、Rendered Mode、Source Mode、主題與 Markdown 樣式選項。',
+    'Intugrove View 選單展開，顯示 NiMode、Rendered Mode、Source Mode、主題與 Markdown 樣式選項。',
     'View 選單同時管理編輯模式、介面主題、文件樣式與各種衍生 View。',
   ) }],
   'page-links': [{ sectionId: 'references', block: media(
@@ -73,7 +73,7 @@ export const guideMediaByPage: Record<string, GuideMediaPlacement[]> = {
   ) }],
   'templates': [{ sectionId: 'trace-instances', block: media(
     '../product-media/guide-templates.png',
-    'NiNote 開啟 templates 研究比較定義，Links View 顯示 Template references 與 Slot references。',
+    'Intugrove 開啟 templates 研究比較定義，Links View 顯示 Template references 與 Slot references。',
     'Template definition、instance 與每個 Slot 的引用，都能從正式 Links View 追溯。',
   ) }],
   'lens': [{ sectionId: 'set-lens', block: media(
@@ -83,63 +83,63 @@ export const guideMediaByPage: Record<string, GuideMediaPlacement[]> = {
   ) }],
   'markmap': [{ sectionId: 'open-markmap', block: media(
     '../product-media/guide-markmap.png',
-    'NiNote MarkMap 原生視窗，中央是目前 Page 的心智圖，頂部有縮放、重新收合與主動回想控制。',
+    'Intugrove MarkMap 原生視窗，中央是目前 Page 的心智圖，頂部有縮放、重新收合與主動回想控制。',
     'MarkMap 從目前 Page 的 Block hierarchy 建立，並在獨立視窗提供導覽與主動回想。',
   ) }],
   'matrix': [{ sectionId: 'read-result', block: media(
     '../product-media/guide-matrix.png',
-    'NiNote Matrix 顯示知識工作 Page 的比較面向、欄位與共有或空值分類。',
+    'Intugrove Matrix 顯示知識工作 Page 的比較面向、欄位與共有或空值分類。',
     'Matrix 是唯讀分類檢查器：看共同、部分與獨有面向，再導回原始 Block。',
   ) }],
   'graphs': [
-    { sectionId: 'page-graph', block: media('../product-media/guide-page-graph.png', 'NiNote Page Graph 以目前知識工作 Page 為中心，顯示連入 Page 與導覽控制。', 'Page Graph：聚焦目前 Page 的反向連結脈絡。') },
-    { sectionId: 'workspace-graph', block: media('../product-media/guide-workspace-graph.png', 'NiNote Workspace Graph 顯示整個 Workspace 的 Page 關係網路與篩選控制。', 'Workspace Graph：從所有可解析 Page Links 重建全域關係。') },
+    { sectionId: 'page-graph', block: media('../product-media/guide-page-graph.png', 'Intugrove Page Graph 以目前知識工作 Page 為中心，顯示連入 Page 與導覽控制。', 'Page Graph：聚焦目前 Page 的反向連結脈絡。') },
+    { sectionId: 'workspace-graph', block: media('../product-media/guide-workspace-graph.png', 'Intugrove Workspace Graph 顯示整個 Workspace 的 Page 關係網路與篩選控制。', 'Workspace Graph：從所有可解析 Page Links 重建全域關係。') },
   ],
   'search-navigation': [
-    { sectionId: 'search-levels', block: media('../product-media/guide-search.png', 'NiNote Workspace 搜尋側欄顯示證據關鍵字在三個 Markdown 檔案中的結果與原文片段。', 'Workspace 搜尋保留檔案分組、命中位置與上下文。') },
-    { sectionId: 'command-palette', block: media('../product-media/guide-command-palette.png', 'NiNote 命令面板列出檔案、Workspace、導覽、View 與 Editor 命令及快捷鍵。', '命令面板集中列出目前可用的命令、快捷鍵與不可執行原因。') },
+    { sectionId: 'search-levels', block: media('../product-media/guide-search.png', 'Intugrove Workspace 搜尋側欄顯示證據關鍵字在三個 Markdown 檔案中的結果與原文片段。', 'Workspace 搜尋保留檔案分組、命中位置與上下文。') },
+    { sectionId: 'command-palette', block: media('../product-media/guide-command-palette.png', 'Intugrove 命令面板列出檔案、Workspace、導覽、View 與 Editor 命令及快捷鍵。', '命令面板集中列出目前可用的命令、快捷鍵與不可執行原因。') },
   ],
   'journal': [{ sectionId: 'open-journal', block: media(
     '../product-media/guide-journal.png',
-    'NiNote Daily Journal 顯示日期導覽、當日 Markdown Page 與回到知識工作的 Page Link。',
-    '啟動 Initialized Workspace 時，NiNote 以原生日期導覽開啟或安全建立當日 Journal。',
+    'Intugrove Daily Journal 顯示日期導覽、當日 Markdown Page 與回到知識工作的 Page Link。',
+    '啟動 Initialized Workspace 時，Intugrove 以原生日期導覽開啟或安全建立當日 Journal。',
   ) }],
   'tasks': [{ sectionId: 'use-task-center', block: media(
     '../product-media/guide-task-center.png',
-    'NiNote Task Center 側欄依 Page 彙整任務，顯示狀態、日期、Project 與篩選控制。',
+    'Intugrove Task Center 側欄依 Page 彙整任務，顯示狀態、日期、Project 與篩選控制。',
     'Task Center 是跨 Markdown Page 的可重建索引；任務本身仍只存在原始 Block。',
   ) }],
   'task-time': [
     { sectionId: 'add-property', block: media('../product-media/guide-task-center.png', 'Task Center 任務列顯示開始、截止、提醒與 Project property badges。', '時間與 Project property 會在 Task Center 以可讀 badge 呈現。') },
-    { sectionId: 'task-calendar', block: media('../product-media/guide-task-calendar.png', 'NiNote Task Calendar 原生視窗顯示當月月曆、日期類型篩選與任務 occurrence。', 'Task Calendar 依 Task Property 的實際日期，把來源任務投影到月份格線。') },
+    { sectionId: 'task-calendar', block: media('../product-media/guide-task-calendar.png', 'Intugrove Task Calendar 原生視窗顯示當月月曆、日期類型篩選與任務 occurrence。', 'Task Calendar 依 Task Property 的實際日期，把來源任務投影到月份格線。') },
   ],
   'files': [{ sectionId: 'bring-files-in', block: media(
     '../product-media/guide-files.png',
-    'NiNote Files View 顯示一般 Workspace 資料夾、Markdown pages、templates 與 assets。',
+    'Intugrove Files View 顯示一般 Workspace 資料夾、Markdown pages、templates 與 assets。',
     '附件與 Page 都保留在一般 Workspace 結構中；外部工具可以直接備份或版本控制。',
   ) }],
   'scope': [{ sectionId: 'current-focus', block: media(
     '../product-media/guide-workspace.png',
-    '目前 NiNote Windows Desktop 的完整主工作區，包含 Workspace、NiMode 與 Links View。',
+    '目前 Intugrove Windows Desktop 的完整主工作區，包含 Workspace、NiMode 與 Links View。',
     '目前範圍以 Windows Desktop、本機 Markdown Workspace 與可重建 View 為核心。',
   ) }],
 };
 
 const baseDocs: DocPage[] = [
   {
-    id: 'overview', category: '開始使用', title: '認識 NiNote',
-    description: '先理解 NiNote 的資料模型、適用情境，以及每一種 View 和 Markdown 來源的關係。',
+    id: 'overview', category: '開始使用', title: '認識 Intugrove',
+    description: '先理解 Intugrove 的資料模型、適用情境，以及每一種 View 和 Markdown 來源的關係。',
     keywords: ['Markdown', 'Windows', 'local', '本機', 'View'],
     sections: [
-      { id: 'what-is-ninote', title: 'NiNote 是什麼', blocks: [
-        { type: 'paragraph', text: 'NiNote 是一套 Windows Desktop-first 的知識工作工具。它以本機 Markdown 資料夾為核心，讓你在 Block 編輯、Page Links、Template、Task 與多種視覺 View 之間重新組織資訊。' },
+      { id: 'what-is-ninote', title: 'Intugrove 是什麼', blocks: [
+        { type: 'paragraph', text: 'Intugrove 是一套 Windows Desktop-first 的知識工作工具。它以本機 Markdown 資料夾為核心，讓你在 Block 編輯、Page Links、Template、Task 與多種視覺 View 之間重新組織資訊。' },
         { type: 'note', title: '一句話原則', text: '內容只有一份：Markdown 是主資料，搜尋、Graph、Matrix、Task Center 等都是可以重新建立的投影。' },
       ] },
       { id: 'three-layers', title: '用三個層次理解產品', blocks: [
         { type: 'list', items: ['檔案層：一個 Page 對應一個 Markdown 檔案，Working Folder 就是你的資料範圍。', '結構層：Page、Block、Link、Template、Slot、Lens 與 Task 提供可攜的語意。', '檢視層：Outline、MarkMap、Matrix、Graph、Search 與 Task Center 從來源重建。'] },
       ] },
       { id: 'who-is-it-for', title: '適合哪些工作', blocks: [
-        { type: 'paragraph', text: '適合用 Markdown 整理研究、課程、文章、產品決策與專案脈絡，並重視檔案自主、備份與版本控制的人。NiNote 不會替你判定內容真偽，而是幫你保留來源、比較結構並看見缺口。' },
+        { type: 'paragraph', text: '適合用 Markdown 整理研究、課程、文章、產品決策與專案脈絡，並重視檔案自主、備份與版本控制的人。Intugrove 不會替你判定內容真偽，而是幫你保留來源、比較結構並看見缺口。' },
       ] },
     ],
   },
@@ -149,7 +149,7 @@ const baseDocs: DocPage[] = [
     keywords: ['Workspace', 'Working Folder', '初始化', '資料夾', 'autosave'],
     sections: [
       { id: 'choose-folder', title: '選擇工作目錄', blocks: [
-        { type: 'steps', items: ['開啟 NiNote，選擇一個本機資料夾，或先開啟其中一個 Markdown 檔案。', '從左側「檔案」檢視開啟既有 .md，或在選定資料夾中建立新檔。', '開始輸入；停止輸入約 500 ms 後，NiNote 會自動儲存。'] },
+        { type: 'steps', items: ['開啟 Intugrove，選擇一個本機資料夾，或先開啟其中一個 Markdown 檔案。', '從左側「檔案」檢視開啟既有 .md，或在選定資料夾中建立新檔。', '開始輸入；停止輸入約 500 ms 後，Intugrove 會自動儲存。'] },
         { type: 'note', title: '不需要手動 Save', text: '一般內容由 autosave 與離開頁面前的安全寫回負責。File 選單提供的是「另存新檔」，不是手動儲存命令。' },
       ] },
       { id: 'initialize', title: '何時需要初始化', blocks: [
@@ -157,7 +157,7 @@ const baseDocs: DocPage[] = [
         { type: 'note', tone: 'warning', title: '初始化不會搬動既有筆記', text: '初始化只啟用 Workspace 能力並建立必要 metadata；它不應修改既有 Markdown。' },
       ] },
       { id: 'default-workspace', title: '預設 Workspace', blocks: [
-        { type: 'paragraph', text: '成功初始化或開啟 Initialized Workspace 後，NiNote 會記住它。下次啟動時會恢復該資料夾，並開啟或建立當日 Daily Journal。' },
+        { type: 'paragraph', text: '成功初始化或開啟 Initialized Workspace 後，Intugrove 會記住它。下次啟動時會恢復該資料夾，並開啟或建立當日 Daily Journal。' },
       ] },
     ],
   },
@@ -200,11 +200,11 @@ const baseDocs: DocPage[] = [
     keywords: ['theme', 'dark', 'light', 'CSS', '樣式'],
     sections: [
       { id: 'app-theme', title: '介面主題', blocks: [
-        { type: 'paragraph', text: '從 View 選單選擇「跟隨 Windows」、「淺色」或「深色」。主題會同步到所有 NiNote 視窗並保留到下次啟動；它只改變呈現，不修改 Workspace 或 Markdown。' },
+        { type: 'paragraph', text: '從 View 選單選擇「跟隨 Windows」、「淺色」或「深色」。主題會同步到所有 Intugrove 視窗並保留到下次啟動；它只改變呈現，不修改 Workspace 或 Markdown。' },
       ] },
       { id: 'markdown-style', title: '匯入本機 CSS 樣式', blocks: [
         { type: 'paragraph', text: '你可以把本機 .css 匯入為 Markdown 樣式方案，調整 NiMode 與 Rendered Mode 的字體、間距與標題層次。選擇會同步到各 Editor Window。' },
-        { type: 'note', tone: 'warning', title: '樣式有明確邊界', text: '匯入 CSS 只作用於文件表面，不能改寫 Toolbar、Sidebar、Dialog、Source Mode 或其他 View。使用不同 selector 的外部主題需要先針對 NiNote 調整。' },
+        { type: 'note', tone: 'warning', title: '樣式有明確邊界', text: '匯入 CSS 只作用於文件表面，不能改寫 Toolbar、Sidebar、Dialog、Source Mode 或其他 View。使用不同 selector 的外部主題需要先針對 Intugrove 調整。' },
       ] },
     ],
   },
@@ -222,7 +222,7 @@ const baseDocs: DocPage[] = [
         { type: 'list', items: ['Linked References：顯示哪些 Page 在什麼 Block 脈絡中引用目前 Page。', 'Unlinked Mentions：找出文字已出現、但尚未建立明確 link 的 Page Name 或 Alias。', 'Outgoing Links：列出目前 Page 指向的目標與來源位置。', '同名頁面：用完整 Page Path 區分不同 namespace 中的同名 Page。'] },
       ] },
       { id: 'rename', title: '重新命名與抽取', blocks: [
-        { type: 'paragraph', text: '重新命名 Page 或 Heading 時，NiNote 會以明確交易更新可安全辨識的 references。你也可以把逐漸長大的 Block 子樹抽成新 Page，再從原位置保留連結。' },
+        { type: 'paragraph', text: '重新命名 Page 或 Heading 時，Intugrove 會以明確交易更新可安全辨識的 references。你也可以把逐漸長大的 Block 子樹抽成新 Page，再從原位置保留連結。' },
       ] },
     ],
   },
@@ -236,7 +236,7 @@ const baseDocs: DocPage[] = [
         { type: 'steps', items: ['把游標放在一般 NiMode Block。', '按 Ctrl+J，選擇「套用模板」，或輸入 /template。', '依名稱或 Slot 內容找到模板，按 Enter 套用。'] },
       ] },
       { id: 'reapply', title: '重新套用只補缺少內容', blocks: [
-        { type: 'paragraph', text: '在 Template root 使用 Alt+Enter 的 Quick Actions，可以選擇「重新套用模板」。NiNote 只補入缺少的 Slot，不覆寫既有文字、位置或你新增的 Block。' },
+        { type: 'paragraph', text: '在 Template root 使用 Alt+Enter 的 Quick Actions，可以選擇「重新套用模板」。Intugrove 只補入缺少的 Slot，不覆寫既有文字、位置或你新增的 Block。' },
       ] },
       { id: 'trace-instances', title: '追蹤實例與 Slot', blocks: [
         { type: 'paragraph', text: '開啟模板定義檔時，Links View 會顯示 Template references，並依定義順序顯示各 Slot references。每筆都保留來源 Page 與完整子樹，可直接導回實例。' },
@@ -335,13 +335,13 @@ const baseDocs: DocPage[] = [
     sections: [
       { id: 'open-journal', title: '用命令前往日期', blocks: [
         { type: 'code', language: 'text', code: '/today\n/tomorrow\n/yesterday\n/2026/09/07+1\n/2026/09/07-1' },
-        { type: 'paragraph', text: '在 Initialized Workspace 的 NiMode 使用日期命令，NiNote 會開啟既有 Journal，或在 pages/YYYY-MM-DD.md 安全建立新檔。' },
+        { type: 'paragraph', text: '在 Initialized Workspace 的 NiMode 使用日期命令，Intugrove 會開啟既有 Journal，或在 pages/YYYY-MM-DD.md 安全建立新檔。' },
       ] },
       { id: 'date-navigation', title: '日期導覽', blocks: [
         { type: 'paragraph', text: '目前 Page 是標準 Daily Journal 時，可以使用前一天／後一天；也能從任何 Page 選擇特定日期，再按「前往」。只有確認後才會建立不存在的日期檔。' },
       ] },
       { id: 'journal-safety', title: '不覆寫、不在午夜跳頁', blocks: [
-        { type: 'note', title: '安全邊界', text: '既有 Journal 不會被覆寫；目前文件無法安全寫回時不會建立目標。NiNote 也不會在午夜自動切換 Page。' },
+        { type: 'note', title: '安全邊界', text: '既有 Journal 不會被覆寫；目前文件無法安全寫回時不會建立目標。Intugrove 也不會在午夜自動切換 Page。' },
       ] },
     ],
   },
@@ -352,7 +352,7 @@ const baseDocs: DocPage[] = [
     sections: [
       { id: 'task-markers', title: '六種 Task 狀態', blocks: [
         { type: 'code', language: 'markdown', code: '- [backlog] 尚未排入\n- [todo] 準備開始\n- [doing] 進行中\n- [review] 等待確認\n- [cancel] 已取消\n- [done] 已完成' },
-        { type: 'paragraph', text: 'NiNote 也相容讀取 [ ] 為 Todo、[x] 為 Done。Task 必須位於無序清單內容開頭，才能被 Task Center 納入。' },
+        { type: 'paragraph', text: 'Intugrove 也相容讀取 [ ] 為 Todo、[x] 為 Done。Task 必須位於無序清單內容開頭，才能被 Task Center 納入。' },
       ] },
       { id: 'use-task-center', title: '跨筆記整理任務', blocks: [
         { type: 'steps', items: ['開啟左側「任務」分頁。', '用六個狀態按鈕決定要顯示哪些 Task。', '再用文字、全部／目前 Page、Project 與時間分類交叉篩選。', '點 Task 文字回到來源；用狀態控制直接更新唯一的來源 Markdown。'] },
@@ -382,23 +382,23 @@ const baseDocs: DocPage[] = [
   },
   {
     id: 'files', category: '檔案與產品邊界', title: '附件、外部檔案與其他程式',
-    description: '讓圖片、附件與 Markdown Page 在 NiNote 和 Windows 其他工具之間自然進出。',
+    description: '讓圖片、附件與 Markdown Page 在 Intugrove 和 Windows 其他工具之間自然進出。',
     keywords: ['asset', '附件', '拖曳', 'Git', '外部檔案'],
     sections: [
       { id: 'bring-files-in', title: '把圖片與檔案放進 Workspace', blocks: [
         { type: 'list', items: ['貼上剪貼簿圖片：保存成 Workspace asset，插入相對 Markdown 圖片連結。', '拖入一般檔案：複製到 assets/，插入可攜的相對連結。', '拖入 Workspace 外檔案：可建立明確的 Windows file URI 引用；這種引用不具可攜性。'] },
       ] },
       { id: 'send-pages-out', title: '把 Page 拖到其他程式', blocks: [
-        { type: 'paragraph', text: '從 Folder Tree 把單一既有 Markdown Page 拖往能接收檔案的瀏覽器或外部程式。NiNote 傳遞實際檔案並採複製語意，不會刪除或修改來源 Page。' },
+        { type: 'paragraph', text: '從 Folder Tree 把單一既有 Markdown Page 拖往能接收檔案的瀏覽器或外部程式。Intugrove 傳遞實際檔案並採複製語意，不會刪除或修改來源 Page。' },
       ] },
       { id: 'external-change', title: '搭配 Git 與外部編輯器', blocks: [
-        { type: 'paragraph', text: 'Workspace 保持一般檔案結構，可以用 Git、備份工具或其他 Markdown 編輯器管理。若外部版本在 NiNote 尚有未儲存內容時改變，NiNote 會暫停 autosave 並要求處理衝突，不以舊內容靜默覆寫。' },
+        { type: 'paragraph', text: 'Workspace 保持一般檔案結構，可以用 Git、備份工具或其他 Markdown 編輯器管理。若外部版本在 Intugrove 尚有未儲存內容時改變，Intugrove 會暫停 autosave 並要求處理衝突，不以舊內容靜默覆寫。' },
       ] },
     ],
   },
   {
     id: 'scope', category: '檔案與產品邊界', title: '目前產品範圍',
-    description: '了解 NiNote 現階段聚焦的平台、資料模型與尚未承諾的能力。',
+    description: '了解 Intugrove 現階段聚焦的平台、資料模型與尚未承諾的能力。',
     keywords: ['scope', 'Windows', 'Android', 'sync', 'AI', '限制'],
     sections: [
       { id: 'current-focus', title: '目前聚焦', blocks: [

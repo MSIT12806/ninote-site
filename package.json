@@ -8,6 +8,7 @@
   },
   "scripts": {
     "dev": "vite",
+    "test:brand": "node verify-intugrove-brand-contract.mjs",
     "test:guide-media": "node verify-guide-media-contract.mjs",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview"

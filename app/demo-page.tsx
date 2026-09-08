@@ -3,7 +3,8 @@ import { ArrowRight, Check, Film, Moon, Sun } from 'lucide-react';
 
 type Theme = 'light' | 'dark';
 
-const productMediaBase = `${import.meta.env.BASE_URL}product-media`;
+const publicBase = import.meta.env.BASE_URL;
+const productMediaBase = `${publicBase}product-media`;
 
 const modes = [
   {
@@ -12,7 +13,7 @@ const modes = [
     label: 'Structure',
     description: '以 Block 階層直接整理研究脈絡、Page Links 與 Task。畫面同時保留 Folder Tree 與 Linked references。',
     image: 'workspace-nimode.png',
-    alt: 'NiNote NiMode 真實畫面，顯示階層 Block、Page Links、Folder Tree 與 Linked references。',
+    alt: 'Intugrove NiMode 真實畫面，顯示階層 Block、Page Links、Folder Tree 與 Linked references。',
   },
   {
     id: 'rendered',
@@ -20,7 +21,7 @@ const modes = [
     label: 'Flow',
     description: '同一份 Markdown 以較接近閱讀結果的方式呈現；資料沒有搬到另一個網站模型。',
     image: 'workspace-rendered.png',
-    alt: 'NiNote Rendered Mode 真實畫面，以渲染後的 Markdown 顯示相同知識工作內容。',
+    alt: 'Intugrove Rendered Mode 真實畫面，以渲染後的 Markdown 顯示相同知識工作內容。',
   },
   {
     id: 'source',
@@ -28,17 +29,17 @@ const modes = [
     label: 'Control',
     description: '直接檢查原始 Markdown、縮排、Task 與 Page Link 語法，保留精確的文字控制。',
     image: 'workspace-source.png',
-    alt: 'NiNote Source Mode 真實畫面，直接顯示相同內容的 Markdown 原始碼。',
+    alt: 'Intugrove Source Mode 真實畫面，直接顯示相同內容的 Markdown 原始碼。',
   },
 ];
 
-function BrandMark() {
-  return <span className="brand-mark" aria-hidden="true"><span>N</span></span>;
+function BrandLogo() {
+  return <img className="brand-logo" src={`${publicBase}intugrove-logo.png`} alt="" aria-hidden="true" />;
 }
 
 function getInitialTheme(): Theme {
-  if (typeof document === 'undefined') return 'dark';
-  return document.documentElement.dataset.theme === 'light' ? 'light' : 'dark';
+  if (typeof document === 'undefined') return 'light';
+  return document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
 }
 
 function ProductAnimation() {
@@ -53,7 +54,7 @@ function ProductAnimation() {
         src={`${productMediaBase}/workspace-nimode.png`}
         width="1280"
         height="800"
-        alt="真實 NiNote Windows Desktop 畫面，呈現同一份 Markdown 的正式編輯介面；下方另有三種模式的靜態對照。"
+        alt="真實 Intugrove Windows Desktop 畫面，呈現同一份 Markdown 的正式編輯介面；下方另有三種模式的靜態對照。"
         loading="eager"
         fetchPriority="high"
       />
@@ -67,13 +68,13 @@ export default function DemoPage() {
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
     localStorage.setItem('ninote-theme', theme);
-    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#080b10' : '#f5f7f8');
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#0e1713' : '#f7f3e9');
   }, [theme]);
 
   return (
     <div className="demo-page">
       <header className="demo-header">
-        <a className="demo-brand" href="../"><BrandMark /><span>NiNote</span><i>Product capture</i></a>
+        <a className="demo-brand" href="../"><BrandLogo /><span>Intugrove</span><i>Product capture</i></a>
         <nav><a href="../">產品介紹</a><a href="../guide/">使用說明</a></nav>
         <div className="theme-switch demo-theme" role="group" aria-label="網站色彩主題">
           <button type="button" className={theme === 'light' ? 'active' : ''} onClick={() => setTheme('light')} aria-pressed={theme === 'light'} aria-label="切換為淺色主題"><Sun size={15} /><span>淺色</span></button>
@@ -84,8 +85,8 @@ export default function DemoPage() {
       <main className="demo-main">
         <section className="demo-intro">
           <div>
-            <span className="demo-kicker">Real NiNote Desktop</span>
-            <h1>這就是現在的 NiNote。</h1>
+            <span className="demo-kicker">Real Intugrove Desktop</span>
+            <h1>這就是現在的 Intugrove。</h1>
             <p>以下畫面由整合測試啟動真正的 Windows Desktop、載入固定 Workspace，再從正式 WebView2 自動錄製。</p>
           </div>
           <aside>
@@ -138,7 +139,7 @@ export default function DemoPage() {
         <section className="demo-source-note">
           <div>
             <strong>畫面可以隨產品重錄</strong>
-            <span>固定測試資料、尺寸與模式切換讓網站素材能追溯到 NiNote 版本，不必再靠手工仿製追趕產品。</span>
+            <span>固定測試資料、尺寸與模式切換讓網站素材能追溯到 Intugrove 版本，不必再靠手工仿製追趕產品。</span>
           </div>
           <a href={`${productMediaBase}/product-media-manifest.json`}>查看錄製資訊</a>
         </section>
