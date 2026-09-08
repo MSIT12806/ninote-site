@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import {
   ArrowLeft, ArrowRight, BookOpen, Check, CheckCircle2, ChevronRight,
-  Clipboard, FileCode2, FolderTree, Menu, Moon, Network, Search, Sun, X,
+  Clipboard, ExternalLink, Menu, Moon, Search, Sun, X,
 } from 'lucide-react';
 import { categories, docs, docsById, type DocBlock, type DocPage } from './guide-content';
 
@@ -16,33 +16,6 @@ function ThemeSwitch({ theme, setTheme }: { theme: Theme; setTheme: (theme: Them
     <div className="theme-switch docs-theme-switch" role="group" aria-label="網站色彩主題">
       <button type="button" className={theme === 'light' ? 'active' : ''} onClick={() => setTheme('light')} aria-pressed={theme === 'light'} aria-label="切換為淺色主題"><Sun size={15} /><span>淺色</span></button>
       <button type="button" className={theme === 'dark' ? 'active' : ''} onClick={() => setTheme('dark')} aria-pressed={theme === 'dark'} aria-label="切換為深色主題"><Moon size={15} /><span>深色</span></button>
-    </div>
-  );
-}
-
-function AnimatedConceptMap() {
-  return (
-    <div className="concept-animation" aria-label="Markdown 轉換成結構與多種 View 的動態示意">
-      <div className="concept-source">
-        <div className="concept-caption"><FileCode2 size={15} /> Markdown</div>
-        <span className="code-line line-long" />
-        <span className="code-line line-medium indent" />
-        <span className="code-line line-short indent" />
-      </div>
-      <div className="concept-rail" aria-hidden="true"><i /></div>
-      <div className="concept-structure">
-        <span className="structure-node root-node">Page</span>
-        <span className="structure-link link-one" />
-        <span className="structure-link link-two" />
-        <span className="structure-node child-one">Block</span>
-        <span className="structure-node child-two">Link</span>
-      </div>
-      <div className="concept-rail" aria-hidden="true"><i /></div>
-      <div className="concept-views">
-        <div><FolderTree size={18} /><span>Outline</span></div>
-        <div><Network size={18} /><span>Graph</span></div>
-        <div className="matrix-mini"><i /><i /><i /><i /></div>
-      </div>
     </div>
   );
 }
@@ -66,6 +39,15 @@ function CodeBlock({ language, code }: { language: string; code: string }) {
 function RenderBlock({ block }: { block: DocBlock }) {
   if (block.type === 'paragraph') return <p>{block.text}</p>;
   if (block.type === 'code') return <CodeBlock language={block.language} code={block.code} />;
+  if (block.type === 'media') return (
+    <figure className="docs-media">
+      <a href={block.src} target="_blank" rel="noreferrer" aria-label={`${block.alt}（開啟原始尺寸）`}>
+        <img src={block.src} alt={block.alt} width={block.width} height={block.height} decoding="async" />
+        <span className="docs-media-open"><ExternalLink size={14} />開啟原圖</span>
+      </a>
+      <figcaption>{block.caption}</figcaption>
+    </figure>
+  );
   if (block.type === 'note') return <aside className={`docs-callout ${block.tone === 'warning' ? 'warning' : ''}`}><CheckCircle2 size={18} /><div><strong>{block.title}</strong><p>{block.text}</p></div></aside>;
   if (block.type === 'steps') return <ol className="docs-steps">{block.items.map((item, index) => <li key={item}><span>{index + 1}</span><p>{item}</p></li>)}</ol>;
   return <ul className="docs-list">{block.items.map((item) => <li key={item}>{item}</li>)}</ul>;
@@ -81,7 +63,6 @@ function Article({ page }: { page: DocPage }) {
       <div className="docs-breadcrumb"><span>使用說明</span><ChevronRight size={13} /><span>{page.category}</span></div>
       <h1>{page.title}</h1>
       <p className="docs-lead">{page.description}</p>
-      {page.id === 'overview' && <AnimatedConceptMap />}
       {page.sections.map((section) => (
         <section id={section.id} key={section.id}>
           <h2>{section.title}</h2>

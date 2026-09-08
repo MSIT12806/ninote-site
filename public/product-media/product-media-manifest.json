@@ -1,21 +1,81 @@
 {
-  "scenarioId": "SITE-01.1-workspace-modes",
-  "ninoteCommit": "c71bd9f05084d2693fac42b0ec52b3ac98b3b7c8",
-  "capturedAtUtc": "2026-09-07T16:25:15.9135278+08:00",
+  "scenarioId": "SITE-02.1-guide-surfaces",
+  "ninoteCommit": "7f594cf6ca7763778690260db68bc451cdd69c87",
+  "capturedAtUtc": "2026-09-08T09:44:29.8967702+08:00",
   "width": 1280,
   "height": 800,
   "stills": [
     {
       "fileName": "workspace-nimode.png",
-      "sha256": "3192ec3d9caf2a19ccbd07371ec6aecec094235a31b57bff44404fc27205c43d"
+      "sha256": "b36d7454df066c93ef552b1cef23fd4c6dc8a452adf312da1f2fcb2a7b644631"
     },
     {
       "fileName": "workspace-rendered.png",
-      "sha256": "51da93833364873f9eca9e6afa41ff294d3203335b67a1f4c591733c735f43ae"
+      "sha256": "70776f1de28a4719f54472712eb2645773c20cbe1e1f9591d8aef6d1531a8d9f"
     },
     {
       "fileName": "workspace-source.png",
-      "sha256": "df4d2dac4a9cb173802d51f6156617e899abe8b7e044bf3795ce522e94bef88c"
+      "sha256": "c430982a15d8badf57aab96987db2cc1e6c5a7e606953451cd397b2aec3ffce4"
+    },
+    {
+      "fileName": "guide-workspace.png",
+      "sha256": "b36d7454df066c93ef552b1cef23fd4c6dc8a452adf312da1f2fcb2a7b644631"
+    },
+    {
+      "fileName": "guide-appearance.png",
+      "sha256": "064f0fd8d6d8d87b584cb6fd9d15f8a54d51ce9db649ded3f70b5b1dbc103b3d"
+    },
+    {
+      "fileName": "guide-page-links.png",
+      "sha256": "b36d7454df066c93ef552b1cef23fd4c6dc8a452adf312da1f2fcb2a7b644631"
+    },
+    {
+      "fileName": "guide-templates.png",
+      "sha256": "606c5bf886c9e2aa41a090056aee19f5d4648a9b0d8df25d8b948ebad50fae7e"
+    },
+    {
+      "fileName": "guide-lens.png",
+      "sha256": "b36d7454df066c93ef552b1cef23fd4c6dc8a452adf312da1f2fcb2a7b644631"
+    },
+    {
+      "fileName": "guide-markmap.png",
+      "sha256": "d970f7346d0a884bd41389fb041f4e9d3744717c75fa57a3aa6a315348219141"
+    },
+    {
+      "fileName": "guide-matrix.png",
+      "sha256": "e7d09a5a89c0c3c3b6cbdf33a460ac6bd665b492a27300786c097356959a90cc"
+    },
+    {
+      "fileName": "guide-page-graph.png",
+      "sha256": "1e3a8295f4b99295023143fd9123e94878b5975072be7d6fd748dc65f191de38"
+    },
+    {
+      "fileName": "guide-workspace-graph.png",
+      "sha256": "2e1a3412a5871fd9f5df9a7b714338f25865af5631d7815be23a9ce1d47f68ec"
+    },
+    {
+      "fileName": "guide-search.png",
+      "sha256": "334dff4dd8409fcd12972da5cb47babc9b7823760ddfec16798ff8d4fef17baf"
+    },
+    {
+      "fileName": "guide-command-palette.png",
+      "sha256": "15de97ee31491deb543d75620724596bae5b740c1d331182501ac1d6027ba65f"
+    },
+    {
+      "fileName": "guide-journal.png",
+      "sha256": "f362d26f54bba98551240549efbee0b06fdfff5fc89c641890502913e661d6b1"
+    },
+    {
+      "fileName": "guide-task-center.png",
+      "sha256": "3228b3350368b78f6102dede0ad6dee4972aa60b7888dbeaf89fcb5ff1288172"
+    },
+    {
+      "fileName": "guide-task-calendar.png",
+      "sha256": "96fff2e15b5fb5607c0e1f8953fb6ad11606db58eec27239305ee062f5330112"
+    },
+    {
+      "fileName": "guide-files.png",
+      "sha256": "f362d26f54bba98551240549efbee0b06fdfff5fc89c641890502913e661d6b1"
     }
   ],
   "gif": {
@@ -24,7 +84,7 @@
     "height": 750,
     "frameCount": 72,
     "frameRate": "8/1",
-    "bytes": 128314,
-    "sha256": "3e512955c06b52e248e29ff50549c76a2a863ab02b4feb075c6185559dc956ea"
+    "bytes": 256288,
+    "sha256": "27a599b34d807bdccaefd70e89b3d0e0a01802387f0fbd92891d15e178bdec4e"
   }
 }

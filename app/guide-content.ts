@@ -3,6 +3,7 @@ export type DocBlock =
   | { type: 'list'; items: string[] }
   | { type: 'steps'; items: string[] }
   | { type: 'code'; language: string; code: string }
+  | { type: 'media'; src: string; alt: string; caption: string; width: number; height: number }
   | { type: 'note'; tone?: 'info' | 'warning'; title: string; text: string };
 
 export type DocSection = {
@@ -30,7 +31,101 @@ export const categories = [
   { title: '檔案與產品邊界', pages: ['files', 'scope'] },
 ];
 
-export const docs: DocPage[] = [
+type GuideMediaPlacement = {
+  sectionId: string;
+  block: Extract<DocBlock, { type: 'media' }>;
+};
+
+const media = (src: string, alt: string, caption: string): GuideMediaPlacement['block'] => ({
+  type: 'media', src, alt, caption, width: 1280, height: 800,
+});
+
+export const guideMediaByPage: Record<string, GuideMediaPlacement[]> = {
+  'overview': [{ sectionId: 'what-is-ninote', block: media(
+    '../product-media/guide-workspace.png',
+    'NiNote Desktop 主工作區，左側是本機 Workspace 檔案，中間以 NiMode 編輯知識工作 Page，右下顯示反向連結。',
+    '實際 NiNote Desktop：一份本機 Markdown，同時提供檔案、Block 編輯、Lens、Task 與 References。',
+  ) }],
+  'workspace': [{ sectionId: 'choose-folder', block: media(
+    '../product-media/guide-files.png',
+    'NiNote Desktop 的檔案側欄展開 workspace、pages、templates 與 assets 資料夾。',
+    '從左側「檔案」管理 Working Folder；初始化後的 Workspace 仍是一般資料夾與 Markdown 檔案。',
+  ) }],
+  'editor-modes': [
+    { sectionId: 'mode-comparison', block: media('../product-media/workspace-nimode.png', 'NiNote 的 NiMode，以可摺疊 Block、Lens、Task 狀態與語意圖示呈現 Markdown。', 'NiMode：以 Block 階層與結構操作為中心。') },
+    { sectionId: 'mode-comparison', block: media('../product-media/workspace-rendered.png', 'NiNote 的 Rendered Mode，在同一工作區呈現接近閱讀結果的 Markdown。', 'Rendered Mode：保留 Markdown 語意的自然編輯畫面。') },
+    { sectionId: 'mode-comparison', block: media('../product-media/workspace-source.png', 'NiNote 的 Source Mode，直接顯示同一份 Markdown 原始文字。', 'Source Mode：檢查與精確編輯真正保存的 Markdown。') },
+  ],
+  'blocks': [{ sectionId: 'block-basics', block: media(
+    '../product-media/workspace-nimode.png',
+    'NiMode 中的多層 Block、摺疊控制、Task Block 與 Template Block。',
+    'NiMode 直接把 Markdown list hierarchy 呈現成可摺疊、可縮排的 Block。',
+  ) }],
+  'appearance': [{ sectionId: 'app-theme', block: media(
+    '../product-media/guide-appearance.png',
+    'NiNote View 選單展開，顯示 NiMode、Rendered Mode、Source Mode、主題與 Markdown 樣式選項。',
+    'View 選單同時管理編輯模式、介面主題、文件樣式與各種衍生 View。',
+  ) }],
+  'page-links': [{ sectionId: 'references', block: media(
+    '../product-media/guide-page-links.png',
+    '知識工作 Page 內含可點擊 Page Links，右側 Links View 列出多個 Linked references。',
+    'Page Link 留在 Markdown；Links View 從整個 Workspace 找回引用它的原始脈絡。',
+  ) }],
+  'templates': [{ sectionId: 'trace-instances', block: media(
+    '../product-media/guide-templates.png',
+    'NiNote 開啟 templates 研究比較定義，Links View 顯示 Template references 與 Slot references。',
+    'Template definition、instance 與每個 Slot 的引用，都能從正式 Links View 追溯。',
+  ) }],
+  'lens': [{ sectionId: 'set-lens', block: media(
+    '../product-media/guide-lens.png',
+    'NiMode 顯示研究與寫作兩個 Semantic Lens，Block 文字依 Lens 採用穩定色彩。',
+    'Lens 是 Markdown 內的可攜標記；NiMode 隱藏 raw marker，保留可辨識的語意呈現。',
+  ) }],
+  'markmap': [{ sectionId: 'open-markmap', block: media(
+    '../product-media/guide-markmap.png',
+    'NiNote MarkMap 原生視窗，中央是目前 Page 的心智圖，頂部有縮放、重新收合與主動回想控制。',
+    'MarkMap 從目前 Page 的 Block hierarchy 建立，並在獨立視窗提供導覽與主動回想。',
+  ) }],
+  'matrix': [{ sectionId: 'read-result', block: media(
+    '../product-media/guide-matrix.png',
+    'NiNote Matrix 顯示知識工作 Page 的比較面向、欄位與共有或空值分類。',
+    'Matrix 是唯讀分類檢查器：看共同、部分與獨有面向，再導回原始 Block。',
+  ) }],
+  'graphs': [
+    { sectionId: 'page-graph', block: media('../product-media/guide-page-graph.png', 'NiNote Page Graph 以目前知識工作 Page 為中心，顯示連入 Page 與導覽控制。', 'Page Graph：聚焦目前 Page 的反向連結脈絡。') },
+    { sectionId: 'workspace-graph', block: media('../product-media/guide-workspace-graph.png', 'NiNote Workspace Graph 顯示整個 Workspace 的 Page 關係網路與篩選控制。', 'Workspace Graph：從所有可解析 Page Links 重建全域關係。') },
+  ],
+  'search-navigation': [
+    { sectionId: 'search-levels', block: media('../product-media/guide-search.png', 'NiNote Workspace 搜尋側欄顯示證據關鍵字在三個 Markdown 檔案中的結果與原文片段。', 'Workspace 搜尋保留檔案分組、命中位置與上下文。') },
+    { sectionId: 'command-palette', block: media('../product-media/guide-command-palette.png', 'NiNote 命令面板列出檔案、Workspace、導覽、View 與 Editor 命令及快捷鍵。', '命令面板集中列出目前可用的命令、快捷鍵與不可執行原因。') },
+  ],
+  'journal': [{ sectionId: 'open-journal', block: media(
+    '../product-media/guide-journal.png',
+    'NiNote Daily Journal 顯示日期導覽、當日 Markdown Page 與回到知識工作的 Page Link。',
+    '啟動 Initialized Workspace 時，NiNote 以原生日期導覽開啟或安全建立當日 Journal。',
+  ) }],
+  'tasks': [{ sectionId: 'use-task-center', block: media(
+    '../product-media/guide-task-center.png',
+    'NiNote Task Center 側欄依 Page 彙整任務，顯示狀態、日期、Project 與篩選控制。',
+    'Task Center 是跨 Markdown Page 的可重建索引；任務本身仍只存在原始 Block。',
+  ) }],
+  'task-time': [
+    { sectionId: 'add-property', block: media('../product-media/guide-task-center.png', 'Task Center 任務列顯示開始、截止、提醒與 Project property badges。', '時間與 Project property 會在 Task Center 以可讀 badge 呈現。') },
+    { sectionId: 'task-calendar', block: media('../product-media/guide-task-calendar.png', 'NiNote Task Calendar 原生視窗顯示當月月曆、日期類型篩選與任務 occurrence。', 'Task Calendar 依 Task Property 的實際日期，把來源任務投影到月份格線。') },
+  ],
+  'files': [{ sectionId: 'bring-files-in', block: media(
+    '../product-media/guide-files.png',
+    'NiNote Files View 顯示一般 Workspace 資料夾、Markdown pages、templates 與 assets。',
+    '附件與 Page 都保留在一般 Workspace 結構中；外部工具可以直接備份或版本控制。',
+  ) }],
+  'scope': [{ sectionId: 'current-focus', block: media(
+    '../product-media/guide-workspace.png',
+    '目前 NiNote Windows Desktop 的完整主工作區，包含 Workspace、NiMode 與 Links View。',
+    '目前範圍以 Windows Desktop、本機 Markdown Workspace 與可重建 View 為核心。',
+  ) }],
+};
+
+const baseDocs: DocPage[] = [
   {
     id: 'overview', category: '開始使用', title: '認識 NiNote',
     description: '先理解 NiNote 的資料模型、適用情境，以及每一種 View 和 Markdown 來源的關係。',
@@ -319,5 +414,19 @@ export const docs: DocPage[] = [
     ],
   },
 ];
+
+export const docs: DocPage[] = baseDocs.map((page) => {
+  const placements = guideMediaByPage[page.id] ?? [];
+  return {
+    ...page,
+    sections: page.sections.map((section) => ({
+      ...section,
+      blocks: [
+        ...placements.filter((placement) => placement.sectionId === section.id).map((placement) => placement.block),
+        ...section.blocks,
+      ],
+    })),
+  };
+});
 
 export const docsById = new Map(docs.map((doc) => [doc.id, doc]));
