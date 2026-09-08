@@ -1,45 +1,45 @@
 {
   "scenarioId": "SITE-02.1-guide-surfaces",
-  "ninoteCommit": "7f594cf6ca7763778690260db68bc451cdd69c87",
-  "capturedAtUtc": "2026-09-08T09:44:29.8967702+08:00",
+  "ninoteCommit": "411bf58ba5728b95062b8710a32a03a61e4aa394",
+  "capturedAtUtc": "2026-09-08T11:27:53.2848732+08:00",
   "width": 1280,
   "height": 800,
   "stills": [
     {
       "fileName": "workspace-nimode.png",
-      "sha256": "b36d7454df066c93ef552b1cef23fd4c6dc8a452adf312da1f2fcb2a7b644631"
+      "sha256": "68220d5faa92c64d21b4542b4961c09132b4eac81cb79d14b79b9e1873388e95"
     },
     {
       "fileName": "workspace-rendered.png",
-      "sha256": "70776f1de28a4719f54472712eb2645773c20cbe1e1f9591d8aef6d1531a8d9f"
+      "sha256": "569b295c8fc68985b0182f1d6d1f27cc083121039e4e060536b219b168499cb9"
     },
     {
       "fileName": "workspace-source.png",
-      "sha256": "c430982a15d8badf57aab96987db2cc1e6c5a7e606953451cd397b2aec3ffce4"
+      "sha256": "4e88e23c1ce63bc5e42f27c469143337a1122f6d0a45734e402b4911488042d9"
     },
     {
       "fileName": "guide-workspace.png",
-      "sha256": "b36d7454df066c93ef552b1cef23fd4c6dc8a452adf312da1f2fcb2a7b644631"
+      "sha256": "68220d5faa92c64d21b4542b4961c09132b4eac81cb79d14b79b9e1873388e95"
     },
     {
       "fileName": "guide-appearance.png",
-      "sha256": "064f0fd8d6d8d87b584cb6fd9d15f8a54d51ce9db649ded3f70b5b1dbc103b3d"
+      "sha256": "a43a3f7b0fefbb3d3398aff7e04fd13c5df665f1f7496ebf92af2ced59fcdfab"
     },
     {
       "fileName": "guide-page-links.png",
-      "sha256": "b36d7454df066c93ef552b1cef23fd4c6dc8a452adf312da1f2fcb2a7b644631"
+      "sha256": "68220d5faa92c64d21b4542b4961c09132b4eac81cb79d14b79b9e1873388e95"
     },
     {
       "fileName": "guide-templates.png",
-      "sha256": "606c5bf886c9e2aa41a090056aee19f5d4648a9b0d8df25d8b948ebad50fae7e"
+      "sha256": "38b656917a5b1cbc1490a8a4731aeba0550dc548ed502be96e9517141725ffbb"
     },
     {
       "fileName": "guide-lens.png",
-      "sha256": "b36d7454df066c93ef552b1cef23fd4c6dc8a452adf312da1f2fcb2a7b644631"
+      "sha256": "68220d5faa92c64d21b4542b4961c09132b4eac81cb79d14b79b9e1873388e95"
     },
     {
       "fileName": "guide-markmap.png",
-      "sha256": "d970f7346d0a884bd41389fb041f4e9d3744717c75fa57a3aa6a315348219141"
+      "sha256": "1fe42d8a0c341f1a6737a279885d8d28c950b3f67bad34ac23c8613384611fc6"
     },
     {
       "fileName": "guide-matrix.png",
@@ -51,23 +51,23 @@
     },
     {
       "fileName": "guide-workspace-graph.png",
-      "sha256": "2e1a3412a5871fd9f5df9a7b714338f25865af5631d7815be23a9ce1d47f68ec"
+      "sha256": "b738569c5dc492c3bb160e1ab7ae4b9e8751a07d91cd2fbe175a2c5ea0ea78c3"
     },
     {
       "fileName": "guide-search.png",
-      "sha256": "334dff4dd8409fcd12972da5cb47babc9b7823760ddfec16798ff8d4fef17baf"
+      "sha256": "a96f467b220badce904a62c20f1dc66aa323d40c4e22d81dece8b1a84bb6e3d1"
     },
     {
       "fileName": "guide-command-palette.png",
-      "sha256": "15de97ee31491deb543d75620724596bae5b740c1d331182501ac1d6027ba65f"
+      "sha256": "b2a7683bff60ef4044eb5976628624cfbd92eb6802553ceeadefc3ba00dd1650"
     },
     {
       "fileName": "guide-journal.png",
-      "sha256": "f362d26f54bba98551240549efbee0b06fdfff5fc89c641890502913e661d6b1"
+      "sha256": "301613d111987e9910b45a94b1b45dfa8de1186fad925ca992821c6c2933e92f"
     },
     {
       "fileName": "guide-task-center.png",
-      "sha256": "3228b3350368b78f6102dede0ad6dee4972aa60b7888dbeaf89fcb5ff1288172"
+      "sha256": "700b9b8aa84af333d534b1ebbef406cf6212aca58cd76facdcdd6c5fd6d2298c"
     },
     {
       "fileName": "guide-task-calendar.png",
@@ -75,7 +75,7 @@
     },
     {
       "fileName": "guide-files.png",
-      "sha256": "f362d26f54bba98551240549efbee0b06fdfff5fc89c641890502913e661d6b1"
+      "sha256": "301613d111987e9910b45a94b1b45dfa8de1186fad925ca992821c6c2933e92f"
     }
   ],
   "gif": {
@@ -84,7 +84,7 @@
     "height": 750,
     "frameCount": 72,
     "frameRate": "8/1",
-    "bytes": 256288,
-    "sha256": "27a599b34d807bdccaefd70e89b3d0e0a01802387f0fbd92891d15e178bdec4e"
+    "bytes": 256205,
+    "sha256": "93acc4ef8a064992933d05128d5ba80975c14cf071fa5a34e00256592f4f0e6c"
   }
 }
