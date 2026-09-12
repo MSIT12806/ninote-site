@@ -27,6 +27,7 @@ for (const path of visibleSources) {
   const source = read(path)
     .replaceAll('https://github.com/MSIT12806/ninote-site', '')
     .replaceAll('NiNote-win-x64-Setup.exe', '')
+    .replaceAll('NiNote-win-x64-Installer.msi', '')
     .replaceAll("localStorage.getItem('ninote-theme')", '')
     .replaceAll("localStorage.setItem('ninote-theme', theme)", '');
   if (/NiNote/.test(source)) throw new Error(`${path} still exposes NiNote as product copy.`);

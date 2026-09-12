@@ -8,7 +8,8 @@ import {
 
 type Theme = 'light' | 'dark';
 
-const downloadUrl = 'https://github.com/MSIT12806/ninote-site/releases/latest/download/NiNote-win-x64-Setup.exe';
+const downloadUrl = 'https://github.com/MSIT12806/ninote-site/releases/latest/download/NiNote-win-x64-Installer.msi';
+const quickInstallUrl = 'https://github.com/MSIT12806/ninote-site/releases/latest/download/NiNote-win-x64-Setup.exe';
 const releasesUrl = 'https://github.com/MSIT12806/ninote-site/releases/latest';
 const feedbackUrl = 'https://github.com/MSIT12806/ninote-site/issues/new';
 const publicBase = import.meta.env.BASE_URL;
@@ -131,7 +132,7 @@ export default function Home() {
 
       <section className="download-section section-shell" id="download" aria-labelledby="download-title">
         <div className="download-panel">
-          <div className="download-copy"><div className="section-kicker">Windows Early Access</div><h2 id="download-title">下載 Intugrove，<br />讓想法從自己的 Markdown 長出脈絡。</h2><p>目前提供 Windows x64 測試版，適用於 Windows 10 1809 以上。安裝於目前的 Windows 使用者，不需要系統管理員權限。</p><div className="download-actions"><a className="primary-action" href={downloadUrl}>下載安裝程式 <ArrowDown size={17} /></a><a className="text-action" href={releasesUrl}>版本說明與檔案校驗碼 <ArrowRight size={16} /></a><a className="text-action" href={feedbackUrl}>回報試用問題 <ArrowRight size={16} /></a></div></div>
+          <div className="download-copy"><div className="section-kicker">Windows Early Access</div><h2 id="download-title">下載 Intugrove，<br />讓想法從自己的 Markdown 長出脈絡。</h2><p>目前提供 Windows x64 測試版，適用於 Windows 10 1809 以上。安裝精靈會先顯示說明並讓你確認；程式固定安裝於目前使用者的 Local App Data，不需要系統管理員權限，建立開始功能表捷徑，不建立桌面捷徑。</p><div className="download-actions"><a className="primary-action" href={downloadUrl}>使用安裝精靈 <ArrowDown size={17} /></a><a className="text-action" href={quickInstallUrl}>快速安裝（直接安裝） <ArrowDown size={17} /></a><a className="text-action" href={releasesUrl}>版本說明與檔案校驗碼 <ArrowRight size={16} /></a><a className="text-action" href={feedbackUrl}>回報試用問題 <ArrowRight size={16} /></a></div></div>
           <div className="download-notes"><div><strong>更新方式</strong><span>Intugrove 啟動後會安靜檢查新版本；有更新時先通知你，只有確認後才會下載、保存筆記並重新啟動。</span></div><div><strong>資料位置</strong><span>你的 Workspace 仍是一般 Markdown 檔案。更新安裝程式不會搬動或取代這些筆記。</span></div><div className="download-warning"><strong>測試版提醒</strong><span>目前安裝程式尚未加上數位簽章，Windows SmartScreen 可能顯示警告。請只從本頁或 GitHub Releases 下載，並可先核對 SHA-256。</span></div></div>
         </div>
       </section>
