@@ -46,7 +46,8 @@ const requiredHomeFragments = [
   'guide-markmap.png',
   'guide-matrix.png',
   'guide-workspace-graph.png',
-  'releases/latest/download/NiNote-win-x64-Setup.exe',
+  'trialRequestUrl',
+  'alegalone@gmail.com',
 ];
 for (const fragment of requiredHomeFragments) {
   if (!home.includes(fragment)) throw new Error(`Home is missing required Intugrove contract fragment: ${fragment}`);

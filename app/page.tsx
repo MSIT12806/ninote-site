@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import {
-  ArrowDown, ArrowRight, Blocks, CalendarDays, Check, Code2, Command, Eye,
+  Mail, ArrowRight, Blocks, CalendarDays, Check, Code2, Command, Eye,
   FileInput, FileText, FolderTree, GitBranch, Languages, Layers3, Link2,
   ListChecks, ListTree, Moon, Network, Palette, PanelTopOpen, PenLine, Search,
   Sparkles, Sun, Tags, Workflow,
@@ -8,10 +8,8 @@ import {
 
 type Theme = 'light' | 'dark';
 
-const downloadUrl = 'https://github.com/MSIT12806/ninote-site/releases/latest/download/NiNote-win-x64-Installer.msi';
-const quickInstallUrl = 'https://github.com/MSIT12806/ninote-site/releases/latest/download/NiNote-win-x64-Setup.exe';
-const releasesUrl = 'https://github.com/MSIT12806/ninote-site/releases/latest';
-const feedbackUrl = 'https://github.com/MSIT12806/ninote-site/issues/new';
+const trialEmail = 'alegalone@gmail.com';
+const trialRequestUrl = 'mailto:' + trialEmail + '?subject=' + encodeURIComponent('Intugrove 試用申請');
 const publicBase = import.meta.env.BASE_URL;
 const productMediaBase = `${publicBase}product-media`;
 
@@ -85,7 +83,7 @@ export default function Home() {
       <a className="skip-link" href="#content">跳至主要內容</a>
       <header className="site-header">
         <a className="brand" href="#top" aria-label="Intugrove 首頁"><BrandLogo decorative /><span className="brand-name">Intugrove</span><span className="brand-caption">讓想法彼此扎根</span></a>
-        <nav aria-label="主要導覽"><a href="#story">理念</a><a href="#capabilities">功能</a><a href="#views">Views</a><a href="#download">下載</a><a href="./guide/">使用說明</a><a href="./demo/">產品畫面</a></nav>
+        <nav aria-label="主要導覽"><a href="#story">理念</a><a href="#capabilities">功能</a><a href="#views">Views</a><a href="#download">申請試用</a><a href="./guide/">使用說明</a><a href="./demo/">產品畫面</a></nav>
         <ThemeSwitch theme={theme} setTheme={setTheme} />
       </header>
 
@@ -93,10 +91,10 @@ export default function Home() {
         <div className="root-lines" aria-hidden="true"><span /><span /><span /></div>
         <div className="hero-copy" id="content">
           <div className="brand-intro"><BrandLogo /><div><span>Intuition, grounded.</span><strong>Intugrove</strong></div></div>
-          <div className="status-chip"><span /> Windows Desktop-first · Early access</div>
+          <div className="status-chip"><span /> Windows Desktop-first · 申請制試用</div>
           <h1>讓直覺落地，<span>讓知識彼此扎根。</span></h1>
           <p className="hero-lead">Intugrove 以本機 Markdown 為根，讓 Block、連結、模板與不同 View 自然長成一片可追蹤的思維林地。你保有自己的檔案，也能從不同角度看見尚未被說清楚的結構。</p>
-          <div className="hero-actions"><a className="primary-action" href={downloadUrl}>下載 Windows 版 <ArrowDown size={17} /></a><a className="text-action" href="#story">走進 Intugrove <ArrowRight size={16} /></a><a className="text-action" href="./guide/">閱讀使用說明 <ArrowRight size={16} /></a></div>
+          <div className="hero-actions"><a className="primary-action" href={trialRequestUrl}>Email 申請試用 <Mail size={17} /></a><a className="text-action" href="#story">走進 Intugrove <ArrowRight size={16} /></a><a className="text-action" href="./guide/">閱讀使用說明 <ArrowRight size={16} /></a></div>
           <dl className="hero-facts"><div><dt>根</dt><dd>本機 Markdown</dd></div><div><dt>林地</dt><dd>Block 與連結</dd></div><div><dt>視野</dt><dd>可重建 Views</dd></div></dl>
         </div>
         <div className="hero-visual"><div className="leaf-halo" aria-hidden="true" /><ProductMedia /><div className="preview-note"><Sparkles size={15} /><span>正式 Desktop 錄製 · NiMode → Rendered → Source</span></div></div>
@@ -132,16 +130,25 @@ export default function Home() {
 
       <section className="download-section section-shell" id="download" aria-labelledby="download-title">
         <div className="download-panel">
-          <div className="download-copy"><div className="section-kicker">Windows Early Access</div><h2 id="download-title">下載 Intugrove，<br />讓想法從自己的 Markdown 長出脈絡。</h2><p>目前提供 Windows x64 測試版，適用於 Windows 10 1809 以上。安裝精靈會先顯示說明並讓你確認；程式固定安裝於目前使用者的 Local App Data，不需要系統管理員權限，建立開始功能表捷徑，不建立桌面捷徑。</p><div className="download-actions"><a className="primary-action" href={downloadUrl}>使用安裝精靈 <ArrowDown size={17} /></a><a className="text-action" href={quickInstallUrl}>快速安裝（直接安裝） <ArrowDown size={17} /></a><a className="text-action" href={releasesUrl}>版本說明與檔案校驗碼 <ArrowRight size={16} /></a><a className="text-action" href={feedbackUrl}>回報試用問題 <ArrowRight size={16} /></a></div></div>
-          <div className="download-notes"><div><strong>更新方式</strong><span>Intugrove 啟動後會安靜檢查新版本；有更新時先通知你，只有確認後才會下載、保存筆記並重新啟動。</span></div><div><strong>資料位置</strong><span>你的 Workspace 仍是一般 Markdown 檔案。更新安裝程式不會搬動或取代這些筆記。</span></div><div className="download-warning"><strong>測試版提醒</strong><span>目前安裝程式尚未加上數位簽章，Windows SmartScreen 可能顯示警告。請只從本頁或 GitHub Releases 下載，並可先核對 SHA-256。</span></div></div>
+          <div className="download-copy">
+            <div className="section-kicker">Trial by request</div>
+            <h2 id="download-title">聯絡 Robin，<br />申請試用版。</h2>
+            <p>Intugrove 目前採申請制試用，請透過 email 聯絡 Robin 本人申請試用。歡迎在信中簡單介紹你的使用情境，以及想用 Intugrove 整理的知識或工作。</p>
+            <div className="download-actions"><a className="primary-action" href={trialRequestUrl}>Email 申請試用 <Mail size={17} /></a><a className="text-action" href={trialRequestUrl}>{trialEmail} <ArrowRight size={16} /></a></div>
+          </div>
+          <div className="download-notes">
+            <div><strong>申請方式</strong><span>寄信聯絡 Robin，收到申請後由本人個別聯繫，並提供試用版的取得方式。</span></div>
+            <div><strong>取得方式</strong><span>目前不提供公開下載或免費版本。試用安排與取得方式，請直接透過 email 洽詢。</span></div>
+            <div><strong>你的資料</strong><span>Workspace 仍是一般 Markdown 檔案，保存在你選擇的位置，可自行管理與備份。</span></div>
+          </div>
         </div>
       </section>
 
       <section className="scope-section section-shell" id="scope">
-        <div className="scope-card"><div className="scope-status"><span /> 目前產品範圍</div><h2>先為個人的 Windows 知識工作，把核心做好。</h2><p>Intugrove 目前是 Windows Desktop-first、以個人本機 Workspace 為主的早期產品。它已具備 Markdown 編輯、連結、搜尋、Template、Task 與多種 View 基礎，但仍在外部使用者驗證階段。</p><div className="scope-details"><div><strong>現在聚焦</strong><span>個人知識工作、本機檔案自主、結構化理解</span></div><div><strong>尚未承諾</strong><span>完整跨平台、多人協作、雲端同步或 AI 自動推理</span></div><div><strong>行動裝置</strong><span>目前只有有限的 Android companion prototype，不是完整行動版</span></div><div><strong>Calendar</strong><span>目前是 Workspace 的本機唯讀投影，不與外部行事曆同步</span></div></div><div className="scope-footer"><p>Intugrove 正在尋找真實工作情境，持續驗證產品方向。</p><a className="coming-soon" href="#download">Windows Early Access 可下載</a></div></div>
+        <div className="scope-card"><div className="scope-status"><span /> 目前產品範圍</div><h2>先為個人的 Windows 知識工作，把核心做好。</h2><p>Intugrove 目前是 Windows Desktop-first、以個人本機 Workspace 為主的早期產品。它已具備 Markdown 編輯、連結、搜尋、Template、Task 與多種 View 基礎，但仍在外部使用者驗證階段。</p><div className="scope-details"><div><strong>現在聚焦</strong><span>個人知識工作、本機檔案自主、結構化理解</span></div><div><strong>尚未承諾</strong><span>完整跨平台、多人協作、雲端同步或 AI 自動推理</span></div><div><strong>行動裝置</strong><span>目前只有有限的 Android companion prototype，不是完整行動版</span></div><div><strong>Calendar</strong><span>目前是 Workspace 的本機唯讀投影，不與外部行事曆同步</span></div></div><div className="scope-footer"><p>Intugrove 正在尋找真實工作情境，持續驗證產品方向。</p><a className="coming-soon" href={trialRequestUrl}>聯絡 Robin 申請試用</a></div></div>
       </section>
 
-      <footer className="site-footer"><div className="footer-brand"><BrandLogo decorative /><div><strong>Intugrove</strong><span>讓直覺落地，讓知識彼此扎根。</span></div></div><div className="footer-links"><a href="./guide/">使用說明</a><a href="./demo/">產品畫面</a><p>Windows Desktop-first · Real product capture</p></div></footer>
+      <footer className="site-footer"><div className="footer-brand"><BrandLogo decorative /><div><strong>Intugrove</strong><span>讓直覺落地，讓知識彼此扎根。</span></div></div><div className="footer-links"><a href={trialRequestUrl}>聯絡 Robin</a><a href="./guide/">使用說明</a><a href="./demo/">產品畫面</a><p>Windows Desktop-first · Real product capture</p></div></footer>
     </main>
   );
 }

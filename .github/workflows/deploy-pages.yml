@@ -39,6 +39,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Verify trial application, brand and product media
+        run: pnpm test:trial && pnpm test:brand && pnpm test:guide-media
+
       - name: Build static site
         env:
           PAGES_BASE_PATH: ${{ steps.pages.outputs.base_path }}
