@@ -1,0 +1,90 @@
+{
+  "scenarioId": "SITE-02.1-guide-surfaces",
+  "ninoteCommit": "ecaa44b37cb05c1813e81f3513bd5e71719c2790",
+  "capturedAtUtc": "2026-09-08T11:51:26.9897112+08:00",
+  "width": 1280,
+  "height": 800,
+  "stills": [
+    {
+      "fileName": "workspace-nimode.png",
+      "sha256": "68220d5faa92c64d21b4542b4961c09132b4eac81cb79d14b79b9e1873388e95"
+    },
+    {
+      "fileName": "workspace-rendered.png",
+      "sha256": "569b295c8fc68985b0182f1d6d1f27cc083121039e4e060536b219b168499cb9"
+    },
+    {
+      "fileName": "workspace-source.png",
+      "sha256": "4e88e23c1ce63bc5e42f27c469143337a1122f6d0a45734e402b4911488042d9"
+    },
+    {
+      "fileName": "guide-workspace.png",
+      "sha256": "68220d5faa92c64d21b4542b4961c09132b4eac81cb79d14b79b9e1873388e95"
+    },
+    {
+      "fileName": "guide-appearance.png",
+      "sha256": "3cd5870947705db86a4ea217b662099fdcdca460f52c99c3537777fc419542f6"
+    },
+    {
+      "fileName": "guide-page-links.png",
+      "sha256": "68220d5faa92c64d21b4542b4961c09132b4eac81cb79d14b79b9e1873388e95"
+    },
+    {
+      "fileName": "guide-templates.png",
+      "sha256": "38b656917a5b1cbc1490a8a4731aeba0550dc548ed502be96e9517141725ffbb"
+    },
+    {
+      "fileName": "guide-lens.png",
+      "sha256": "68220d5faa92c64d21b4542b4961c09132b4eac81cb79d14b79b9e1873388e95"
+    },
+    {
+      "fileName": "guide-markmap.png",
+      "sha256": "2b26d3edf9da47992267a38a1f6d0331c146bcbdf6ca1daa664bfd7aab29813f"
+    },
+    {
+      "fileName": "guide-matrix.png",
+      "sha256": "e7d09a5a89c0c3c3b6cbdf33a460ac6bd665b492a27300786c097356959a90cc"
+    },
+    {
+      "fileName": "guide-page-graph.png",
+      "sha256": "1e3a8295f4b99295023143fd9123e94878b5975072be7d6fd748dc65f191de38"
+    },
+    {
+      "fileName": "guide-workspace-graph.png",
+      "sha256": "849bfef7ef6fb14895e13e63d3ba0aca6526d4105d5a8798dee4ca081e53ba7a"
+    },
+    {
+      "fileName": "guide-search.png",
+      "sha256": "a96f467b220badce904a62c20f1dc66aa323d40c4e22d81dece8b1a84bb6e3d1"
+    },
+    {
+      "fileName": "guide-command-palette.png",
+      "sha256": "b2a7683bff60ef4044eb5976628624cfbd92eb6802553ceeadefc3ba00dd1650"
+    },
+    {
+      "fileName": "guide-journal.png",
+      "sha256": "301613d111987e9910b45a94b1b45dfa8de1186fad925ca992821c6c2933e92f"
+    },
+    {
+      "fileName": "guide-task-center.png",
+      "sha256": "700b9b8aa84af333d534b1ebbef406cf6212aca58cd76facdcdd6c5fd6d2298c"
+    },
+    {
+      "fileName": "guide-task-calendar.png",
+      "sha256": "96fff2e15b5fb5607c0e1f8953fb6ad11606db58eec27239305ee062f5330112"
+    },
+    {
+      "fileName": "guide-files.png",
+      "sha256": "301613d111987e9910b45a94b1b45dfa8de1186fad925ca992821c6c2933e92f"
+    }
+  ],
+  "gif": {
+    "fileName": "workspace-modes.gif",
+    "width": 1200,
+    "height": 750,
+    "frameCount": 72,
+    "frameRate": "8/1",
+    "bytes": 256205,
+    "sha256": "93acc4ef8a064992933d05128d5ba80975c14cf071fa5a34e00256592f4f0e6c"
+  }
+}

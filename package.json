@@ -8,9 +8,11 @@
   },
   "scripts": {
     "dev": "vite",
-    "test:download": "node scripts/verify-download-contract.mjs",
+    "test:brand": "node verify-intugrove-brand-contract.mjs",
+    "test:guide-media": "node verify-guide-media-contract.mjs",
     "build": "tsc --noEmit && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test:trial": "node verify-trial-contract.mjs"
   },
   "dependencies": {
     "lucide-react": "1.31.0",

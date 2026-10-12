@@ -3,14 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#080b10" />
+    <meta name="theme-color" content="#0e1713" />
     <meta name="color-scheme" content="light dark" />
     <meta
       name="description"
-      content="NiNote 是一套以本機 Markdown 為主資料的 Windows 知識工作工具，透過 Block、Page Links、MarkMap、Matrix 與 Graph 重新組織資訊。"
+      content="Intugrove 是一套以本機 Markdown 為根的 Windows 知識工作工具，讓 Block、連結、模板與多種 View 共同長成可追蹤的思維林地。"
     />
-    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
-    <title>NiNote｜從 Markdown 看見知識結構</title>
+    <link rel="icon" type="image/png" href="./intugrove-logo.png" />
+    <title>Intugrove｜讓知識彼此扎根</title>
     <script>
       (() => {
         const saved = localStorage.getItem('ninote-theme');
@@ -19,7 +19,7 @@
           : matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
         document.documentElement.dataset.theme = theme;
         document.querySelector('meta[name="theme-color"]')
-          ?.setAttribute('content', theme === 'dark' ? '#080b10' : '#f5f7f8');
+          ?.setAttribute('content', theme === 'dark' ? '#0e1713' : '#f7f3e9');
       })();
     </script>
   </head>
